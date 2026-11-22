@@ -1,31 +1,529 @@
 source /tmp/pvz/reanim: 146 reanim, 1788 png, scale 0.78 q78
 jobs: 13
 baking Cabbagepult <- Cabbagepult
-  cell 17x14  clips=['idle']
-  !! EMPTY clip idle
+  tracks: 20
+   T anim_blink                         n= 74 vis=  5 sym=                                         found=-
+   T anim_idle                          n= 74 vis= 31 sym=                                         found=-
+   T anim_shooting                      n= 74 vis= 38 sym=                                         found=-
+   T Cabbagepult_backleaf1              n= 74 vis= 69 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_LEFTTI found=True
+   T Cabbagepult_backleaf2              n= 74 vis= 69 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_RIGHTT found=True
+   T Cabbagepult_basket                 n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_BASKET          found=True
+   T Cabbagepult_cabbage                n= 74 vis= 43 sym=IMAGE_REANIM_CABBAGEPULT_CABBAGE         found=True
+   T Cabbagepult_basket_overlay         n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_BASKET_OVERLAY  found=True
+   T Cabbagepult_stalk4                 n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_STALK4          found=True
+   T Cabbagepult_stalk3                 n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_STALK3          found=True
+   T Cabbagepult_stalk2                 n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_STALK2          found=True
+   T Cabbagepult_stalk1                 n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_STALK1          found=True
+   T Cabbagepult_leaf                   n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_LEAF            found=True
+   T anim_face                          n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_HEAD            found=True
+   T Cabbagepult_blink                  n= 74 vis= 16 sym=IMAGE_REANIM_CABBAGEPULT_BLINK1          found=True
+   T Cabbagepult_eyebrow2               n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_EYEBROW         found=True
+   T Cabbagepult_eyebrow1               n= 74 vis= 69 sym=IMAGE_REANIM_CABBAGEPULT_EYEBROW         found=True
+   T frontleaf                          n= 74 vis= 69 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF        found=True
+   T frontleaf_right_tip                n= 74 vis= 69 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_RIGHTT found=True
+   T frontleaf_tip_left                 n= 74 vis= 69 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_LEFTTI found=True
+  anims: 4 ['blink', 'face', 'idle', 'shooting']
+  picked: [('idle', 5, 36), ('shoot', 36, 74)]
+  cell 413x418 ox=54.0 oy=24.5 missing=0 []
+  idle      31 fr  413x 418    35.8 KB parts/frame [16, 16, 16, 16, 16, 16]
+  shoot     38 fr  413x 418    45.6 KB parts/frame [16, 16, 16, 16, 16, 16]
 baking Chomper <- Chomper
-  no clips for Chomper
+  tracks: 30
+   T anim_swallow                       n= 94 vis= 28 sym=                                         found=-
+   T anim_chew                          n= 94 vis= 16 sym=                                         found=-
+   T anim_bite                          n= 94 vis= 25 sym=                                         found=-
+   T anim_idle                          n= 94 vis= 25 sym=                                         found=-
+   T Chomper_groundleaf4                n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_GROUNDLEAF4         found=True
+   T Chomper_groundleaf3                n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_GROUNDLEAF3         found=True
+   T Chomper_stem3                      n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_STEM3               found=True
+   T Chomper_stem2                      n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_STEM2               found=True
+   T Chomper_stem1                      n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_STEM1               found=True
+   T Chomper_stomach                    n= 94 vis= 15 sym=IMAGE_REANIM_CHOMPER_STOMACH             found=True
+   T Chomper_groundleaf1                n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_GROUNDLEAF1         found=True
+   T Chomper_groundleaf1tip             n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_GROUNDLEAF1TIP      found=True
+   T Chomper_Headleaf4                  n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_HEADLEAF4           found=True
+   T Chomper_Headleaf3                  n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_HEADLEAF3           found=True
+   T Chomper_Headleaf2                  n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_HEADLEAF2           found=True
+   T Chomper_Headleaf1                  n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_HEADLEAF1           found=True
+   T Chomper_insidemouth                n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_INSIDEMOUTH         found=True
+   T Chomper_tongue                     n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_TONGUE              found=True
+   T Chomper_underjaw                   n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_UNDERJAW            found=True
+   T Chomper_bottomlip                  n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_BOTTOMLIP           found=True
+   T Zombie_outerarm_hand               n= 94 vis= 35 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_HAND        found=True
+   T Zombie_outerarm_lower              n= 94 vis= 35 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_LOWER       found=True
+   T Chomper_groundleaf2                n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_GROUNDLEAF2         found=True
+   T Chomper_groundleaf2tip             n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_GROUNDLEAF2TIP      found=True
+   T Chomper_tongue_lick                n= 94 vis=  7 sym=IMAGE_REANIM_CHOMPER_TONGUE              found=True
+   T Chomper_spike4                     n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_SPIKE               found=True
+   T Chomper_spike3                     n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_SPIKE               found=True
+   T Chomper_spike2                     n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_SPIKE               found=True
+   T Chomper_spike1                     n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_SPIKE               found=True
+   T Chomper_topjaw                     n= 94 vis= 94 sym=IMAGE_REANIM_CHOMPER_TOPJAW              found=True
+  anims: 4 ['bite', 'chew', 'idle', 'swallow']
+  picked: [('idle', 0, 25), ('special', 25, 50)]
+  cell 116x108 ox=12.9 oy=29.1 missing=0 []
+  idle      25 fr  116x 108    22.3 KB parts/frame [22, 22, 22, 22, 22, 22]
+  special   25 fr  116x 108    25.1 KB parts/frame [22, 22, 22, 22, 22, 22]
 baking PeaShooter <- PeaShooter
-  no clips for PeaShooter
+  tracks: 24
+   T anim_full_idle                     n=104 vis= 25 sym=                                         found=-
+   T anim_shooting                      n=104 vis= 25 sym=                                         found=-
+   T anim_head_idle                     n=104 vis= 25 sym=                                         found=-
+   T anim_idle                          n=104 vis= 25 sym=                                         found=-
+   T backleaf                           n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_BACKLEAF         found=True
+   T backleaf_left_tip                  n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_BACKLEAF_LEFTTIP found=True
+   T backleaf_right_tip                 n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_BACKLEAF_RIGHTTI found=True
+   T stalk_bottom                       n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_STALK_BOTTOM     found=True
+   T stalk_top                          n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_STALK_TOP        found=True
+   T frontleaf                          n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF        found=True
+   T frontleaf_right_tip                n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_RIGHTT found=True
+   T frontleaf_tip_left                 n=104 vis= 50 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_LEFTTI found=True
+   T anim_stem                          n=104 vis= 50 sym=                                         found=-
+   T idle_headleaf_farthest             n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_HEADLEAF_FARTHES found=True
+   T idle_headleaf_3rdfarthest          n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_HEADLEAF_3RDFART found=True
+   T idle_headleaf_2ndfarthest          n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_HEADLEAF_NEAREST found=True
+   T idle_headleaf_tip_bottom           n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_HEADLEAF_TIP_BOT found=True
+   T idle_headleaf_nearest              n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_HEADLEAF_2RDFART found=True
+   T idle_headleaf_tip_top              n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_HEADLEAF_TIP_TOP found=True
+   T anim_face                          n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_HEAD             found=True
+   T idle_mouth                         n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_MOUTH            found=True
+   T idle_shoot_blink                   n=104 vis=  6 sym=IMAGE_REANIM_PEASHOOTER_BLINK1           found=True
+   T anim_blink                         n=104 vis=  3 sym=IMAGE_REANIM_PEASHOOTER_BLINK1           found=True
+   T PeaShooter_eyebrow                 n=104 vis= 75 sym=IMAGE_REANIM_PEASHOOTER_EYEBROW          found=True
+  anims: 7 ['blink', 'face', 'fullidle', 'headidle', 'idle', 'shooting', 'stem']
+  picked: [('idle', 79, 104), ('shoot', 54, 79)]
+  cell 77x62 ox=6.4 oy=-3.5 missing=0 []
+  !! EMPTY clip idle drawn/frame [17, 17, 17, 17, 17, 17]
+  !! EMPTY clip shoot drawn/frame [9, 9, 9, 9, 9, 9]
 baking SunFlower <- SunFlower
-  cell 65x64  clips=['idle']
-  !! EMPTY clip idle
+  tracks: 29
+   T backleaf                           n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_BACKLEAF         found=True
+   T backleaf_left_tip                  n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_BACKLEAF_LEFTTIP found=True
+   T backleaf_right_tip                 n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_BACKLEAF_RIGHTTI found=True
+   T stalk_bottom                       n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_STALK_BOTTOM     found=True
+   T stalk_top                          n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_STALK_TOP        found=True
+   T frontleaf                          n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF        found=True
+   T frontleaf_right_tip                n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_RIGHTT found=True
+   T frontleaf_left_tip                 n= 29 vis= 25 sym=IMAGE_REANIM_PEASHOOTER_FRONTLEAF_LEFTTI found=True
+   T SunFlower_leftpetal8               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL8        found=True
+   T SunFlower_leftpetal7               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL7        found=True
+   T SunFlower_leftpetal6               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL6        found=True
+   T SunFlower_leftpetal5               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL5        found=True
+   T SunFlower_leftpetal4               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL4        found=True
+   T SunFlower_leftpetal3               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL3        found=True
+   T SunFlower_leftpetal2               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL2        found=True
+   T SunFlower_leftpetal1               n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_LEFTPETAL1        found=True
+   T SunFlower_bottompetals             n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_BOTTOMPETALS      found=True
+   T SunFlower_rightpetal9              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL9       found=True
+   T SunFlower_rightpetal8              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL8       found=True
+   T SunFlower_rightpetal7              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL7       found=True
+   T SunFlower_rightpetal6              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL6       found=True
+   T SunFlower_rightpetal5              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL5       found=True
+   T SunFlower_rightpetal4              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL4       found=True
+   T SunFlower_rightpetal3              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL3       found=True
+   T SunFlower_rightpetal2              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL2       found=True
+   T SunFlower_rightpetal1              n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_RIGHTPETAL1       found=True
+   T SunFlower_toppetals                n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_TOPPETALS         found=True
+   T anim_idle                          n= 29 vis= 25 sym=IMAGE_REANIM_SUNFLOWER_HEAD              found=True
+   T anim_blink                         n= 29 vis=  3 sym=IMAGE_REANIM_SUNFLOWER_BLINK2            found=True
+  anims: 2 ['blink', 'idle']
+  picked: [('idle', 4, 29)]
+  cell 65x64 ox=-1.3 oy=-1.7 missing=0 []
+  !! EMPTY clip idle drawn/frame [28, 28, 28, 28, 28, 28]
 baking Wallnut <- Wallnut
-  no clips for Wallnut
+  tracks: 6
+   T _ground                            n= 56 vis=  0 sym=                                         found=-
+   T anim_idle                          n= 56 vis= 17 sym=                                         found=-
+   T anim_face                          n= 56 vis= 30 sym=IMAGE_REANIM_WALLNUT_BODY                found=True
+   T anim_blink_twitch                  n= 56 vis=  5 sym=IMAGE_REANIM_WALLNUT_TWITCH              found=True
+   T anim_blink_twice                   n= 56 vis=  6 sym=IMAGE_REANIM_WALLNUT_BLINK1              found=True
+   T anim_blink_thrice                  n= 56 vis=  9 sym=IMAGE_REANIM_WALLNUT_BLINK1              found=True
+  anims: 5 ['blinkthrice', 'blinktwice', 'blinktwitch', 'face', 'idle']
+  picked: [('idle', 0, 17)]
+  cell 71x63 ox=2.0 oy=-0.7 missing=0 []
+  !! EMPTY clip idle drawn/frame [1, 1, 1, 1, 1, 1]
 baking Zombie <- Zombie
-  no clips for Zombie
+  tracks: 42
+   T anim_superlongdeath                n=504 vis=137 sym=                                         found=-
+   T anim_swim                          n=504 vis= 42 sym=                                         found=-
+   T anim_death2                        n=504 vis= 33 sym=                                         found=-
+   T anim_death                         n=504 vis= 39 sym=                                         found=-
+   T anim_walk2                         n=504 vis= 47 sym=                                         found=-
+   T anim_walk                          n=504 vis= 47 sym=                                         found=-
+   T anim_idle2                         n=504 vis= 15 sym=                                         found=-
+   T anim_idle                          n=504 vis= 29 sym=                                         found=-
+   T anim_eat                           n=504 vis= 40 sym=                                         found=-
+   T anim_waterdeath                    n=504 vis= 25 sym=                                         found=-
+   T anim_dance                         n=504 vis= 50 sym=                                         found=-
+   T _ground                            n=504 vis=  0 sym=                                         found=-
+   T anim_innerarm3                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_HAND        found=True
+   T anim_innerarm2                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_LOWER       found=True
+   T anim_innerarm1                     n=504 vis=496 sym=IMAGE_REANIM_ZOMBIE_INNERARM_UPPER       found=True
+   T Zombie_flaghand                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_FLAGHAND             found=True
+   T Zombie_innerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR  found=True
+   T Zombie_neck                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_NECK                 found=True
+   T anim_head1                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HEAD                 found=True
+   T Zombie_innerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_UPPER       found=True
+   T Zombie_innerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_LOWER       found=True
+   T Zombie_innerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_FOOT        found=True
+   T Zombie_outerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_UPPER       found=True
+   T Zombie_outerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_FOOT        found=True
+   T Zombie_outerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_LOWER       found=True
+   T Zombie_body                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_BODY                 found=True
+   T Zombie_duckytube                   n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_DUCKYTUBE            found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_tie                         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TIE                  found=True
+   T anim_head2                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_JAW                  found=True
+   T anim_tongue                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TONGUE               found=True
+   T Zombie_mustache                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_MUSTACHE1            found=True
+   T anim_screendoor                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_SCREENDOOR1          found=True
+   T Zombie_innerarm_screendoor_hand    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR_ found=True
+   T Zombie_outerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_SCREENDOOR  found=True
+   T Zombie_outerarm_hand               n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_HAND        found=True
+   T Zombie_outerarm_upper              n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_UPPER       found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_outerarm_lower              n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_LOWER       found=True
+   T anim_hair                          n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HAIR                 found=True
+   T anim_cone                          n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_CONE1                found=True
+   T anim_bucket                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_BUCKET1              found=True
+  anims: 17 ['dance', 'death', 'death2', 'eat', 'hair', 'head1', 'head2', 'idle', 'idle2', 'innerarm1', 'innerarm2', 'innerarm3', 'superlongdeath', 'swim', 'walk', 'walk2', 'waterdeath']
+  picked: [('walk', 44, 91), ('eat', 138, 178), ('die', 178, 217), ('special', 454, 504)]
+  cell 544x679 ox=456.1 oy=544.7 missing=0 []
+  walk      24 fr  544x 679    83.0 KB parts/frame [17, 17, 17, 17, 17, 17]
+  eat       40 fr  544x 679   125.3 KB parts/frame [17, 17, 17, 17, 17, 17]
+  die       39 fr  544x 679   156.1 KB parts/frame [14, 14, 14, 14, 14, 14]
+  special   25 fr  544x 679    73.5 KB parts/frame [17, 17, 16, 17, 17, 17]
 baking Zombie_bungi <- Zombie_bungi
-  no clips for Zombie_bungi
+  tracks: 33
+   T anim_idle                          n= 67 vis= 20 sym=                                         found=-
+   T anim_drop                          n= 67 vis=  9 sym=                                         found=-
+   T anim_grab                          n= 67 vis= 15 sym=                                         found=-
+   T anim_hold                          n= 67 vis= 10 sym=                                         found=-
+   T anim_raise                         n= 67 vis= 13 sym=                                         found=-
+   T Zombie_bungi_body                  n= 67 vis= 41 sym=IMAGE_REANIM_ZOMBIE_BUNGI_BODY           found=True
+   T Zombie_bungi_rightleg_upper        n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTLEG_UPPER found=True
+   T Zombie_bungi_rightleg_lower        n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTLEG_LOWER found=True
+   T Zombie_bungi_rightleg_foot         n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_FOOT           found=True
+   T Zombie_bungi_leftleg_upper         n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTLEG_UPPER  found=True
+   T Zombie_bungi_left_tatter           n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFT_TATTER    found=True
+   T Zombie_bungi_leftshirt             n= 67 vis= 41 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTSHIRT      found=True
+   T Zombie_bungi_rightshirt            n= 67 vis= 41 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTSHIRT     found=True
+   T Zombie_bungi_leftleg_lower         n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTLEG_LOWER  found=True
+   T Zombie_bungi_leftleg_tatter        n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTLEG_TATTER found=True
+   T Zombie_bungi_leftleg_foot          n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_FOOT           found=True
+   T Zombie_bungi_rightarm_upper        n= 67 vis= 40 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTARM_UPPER found=True
+   T Zombie_bungi_rightarm_lower        n= 67 vis= 40 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTARM_LOWER found=True
+   T Zombie_bungi_rightarm_cuff         n= 67 vis= 40 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTARM_CUFF  found=True
+   T Zombie_bungi_rightarm_hand         n= 67 vis= 40 sym=IMAGE_REANIM_ZOMBIE_BUNGI_HAND           found=True
+   T Zombie_bungi_leftarm_upper         n= 67 vis= 40 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTARM_UPPER  found=True
+   T Zombie_bungi_leftarm_lower         n= 67 vis= 40 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTARM_LOWER  found=True
+   T Zombie_bungi_leftarm_hand          n= 67 vis= 40 sym=IMAGE_REANIM_ZOMBIE_BUNGI_HAND           found=True
+   T Zombie_bungi_body2                 n= 67 vis= 26 sym=IMAGE_REANIM_ZOMBIE_BUNGI_BODY2          found=True
+   T Zombie_bungi_rightarm_upper2       n= 67 vis= 27 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTARM_UPPER found=True
+   T Zombie_bungi_leftarm_upper2        n= 67 vis= 27 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTARM_UPPER2 found=True
+   T Zombie_bungi_jaw                   n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_JAW            found=True
+   T anim_head1                         n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_HEAD           found=True
+   T Zombie_bungi_hair                  n= 67 vis= 67 sym=IMAGE_REANIM_ZOMBIE_BUNGI_HAIR           found=True
+   T Zombie_bungi_leftarm_hand2         n= 67 vis= 27 sym=IMAGE_REANIM_ZOMBIE_BUNGI_HAND2          found=True
+   T Zombie_bungi_leftarm_lower2        n= 67 vis= 27 sym=IMAGE_REANIM_ZOMBIE_BUNGI_LEFTARM_LOWER2 found=True
+   T Zombie_bungi_rightarm_hand2        n= 67 vis= 27 sym=IMAGE_REANIM_ZOMBIE_BUNGI_HAND2          found=True
+   T Zombie_bungi_rightarm_lower2       n= 67 vis= 27 sym=IMAGE_REANIM_ZOMBIE_BUNGI_RIGHTARM_LOWER found=True
+  anims: 6 ['drop', 'grab', 'head1', 'hold', 'idle', 'raise']
+  picked: [('special', 29, 44)]
+  cell 169x95 ox=58.7 oy=8.7 missing=0 []
+  special   15 fr  169x  95     4.9 KB parts/frame [21, 21, 21, 21, 21, 21]
 baking Zombie_gargantuar <- Zombie_gargantuar
-  no clips for Zombie_gargantuar
+  tracks: 42
+   T anim_idle                          n=197 vis= 22 sym=                                         found=-
+   T anim_walk                          n=197 vis= 49 sym=                                         found=-
+   T anim_smash                         n=197 vis= 33 sym=                                         found=-
+   T anim_throw                         n=197 vis= 34 sym=                                         found=-
+   T anim_death                         n=197 vis= 59 sym=                                         found=-
+   T _ground                            n=197 vis=  0 sym=                                         found=-
+   T Zombie_gargantuar_innerarm_upper   n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_INNERARM_ found=True
+   T Zombie_gargantuar_innerarm_lower   n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_INNERARM_ found=True
+   T Zombie_gargantuar_innerarm_hand    n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_INNERARM_ found=True
+   T Zombie_gargantua_innerleg_foot     n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_FOOT      found=True
+   T Zombie_gargantua_innerleg_lower    n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_INNERLEG_ found=True
+   T Zombie_gargantua_innerleg_upper    n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_INNERLEG_ found=True
+   T Zombie_gargantua_body2             n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_BODY2     found=True
+   T Zombie_gargantuar_outerleg_foot    n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_FOOT      found=True
+   T Zombie_gargantuar_outerleg_lower   n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_OUTERLEG_ found=True
+   T Zombie_gargantuar_outerleg_upper   n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_OUTERLEG_ found=True
+   T Zombie_gargantuar_trashcan2        n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_TRASHCAN2 found=True
+   T Zombie_imp_innerarm_upper          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_ARM1             found=True
+   T Zombie_imp_innerleg_foot           n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_INNERLEG_FOOT    found=True
+   T Zombie_imp_innerleg_lower          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_INNERLEG_LOWER   found=True
+   T Zombie_imp_innerleg_upper          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_INNERLEG_UPPER   found=True
+   T Zombie_imp_outerleg_foot           n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_OUTERLEG_FOOT    found=True
+   T Zombie_imp_outerleg_lower          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_OUTERLEG_LOWER   found=True
+   T Zombie_imp_outerleg_upper          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_OUTERLEG_UPPER   found=True
+   T Zombie_imp_body2                   n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_BODY2            found=True
+   T Zombie_imp_body1                   n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_BODY1            found=True
+   T Zombie_imp_head                    n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_HEAD             found=True
+   T Zombie_imp_jaw                     n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_JAW              found=True
+   T Zombie_gargantuar_trashcan         n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_TRASHCAN1 found=True
+   T Zombie_gargantua_body1             n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_BODY1     found=True
+   T Zombie_gargantuar_whiterope        n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_WHITEROPE found=True
+   T Zombie_imp_innerarm_lower          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_ARM2             found=True
+   T Zombie_imp_outerarm_upper          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_ARM1             found=True
+   T Zombie_imp_outerarm_lower          n=197 vis=  0 sym=IMAGE_REANIM_ZOMBIE_IMP_ARM2             found=True
+   T Zombie_gargantuar_rope             n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_ROPE      found=True
+   T anim_head1                         n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_HEAD      found=True
+   T Zombie_gargantua_jaw               n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_JAW       found=True
+   T Zombie_gargantuar_telephonepole    n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_TELEPHONE found=True
+   T Zombie_gargantuar_outerarm_upper   n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_OUTERARM_ found=True
+   T Zombie_gargantuar_outerarm_lower   n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_OUTERARM_ found=True
+   T Zombie_gargantuar_outerarm_hand    n=197 vis=197 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_OUTERARM_ found=True
+   T Zombie_gargantuar_innerarm_thumb   n=197 vis= 13 sym=IMAGE_REANIM_ZOMBIE_GARGANTUAR_INNERARM_ found=True
+  anims: 6 ['death', 'head1', 'idle', 'smash', 'throw', 'walk']
+  picked: [('walk', 22, 71), ('die', 138, 197), ('special', 71, 104)]
+  cell 1860x2842 ox=654.4 oy=2216.8 missing=0 []
+  walk      25 fr 1860x2842   502.1 KB parts/frame [20, 20, 20, 20, 20, 20]
+  die       30 fr 1860x2842   627.4 KB parts/frame [20, 20, 20, 20, 20, 20]
+  special   33 fr 1860x2842   757.8 KB parts/frame [20, 20, 20, 20, 20, 20]
 baking Zombie_paper <- Zombie_paper
-  no clips for Zombie_paper
+  tracks: 31
+   T anim_death                         n=216 vis= 36 sym=                                         found=-
+   T anim_eat                           n=216 vis= 24 sym=                                         found=-
+   T anim_eat_nopaper                   n=216 vis= 24 sym=                                         found=-
+   T anim_walk                          n=216 vis= 47 sym=                                         found=-
+   T anim_walk_nopaper                  n=216 vis= 47 sym=                                         found=-
+   T anim_idle                          n=216 vis= 25 sym=                                         found=-
+   T anim_gasp                          n=216 vis= 13 sym=                                         found=-
+   T _ground                            n=216 vis=  0 sym=                                         found=-
+   T Zombie_paper_rightarm_upper        n=216 vis=201 sym=IMAGE_REANIM_ZOMBIE_PAPER_RIGHTARM_UPPER found=True
+   T Zombie_paper_rightarm_lower        n=216 vis=201 sym=IMAGE_REANIM_ZOMBIE_PAPER_RIGHTARM_LOWER found=True
+   T Zombie_paper_hands2                n=216 vis= 97 sym=IMAGE_REANIM_ZOMBIE_PAPER_HANDS2         found=True
+   T Zombie_paper_lowerbody2            n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_LOWERBODY2     found=True
+   T Zombie_paper_rightleg_upper        n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_RIGHTLEG_UPPER found=True
+   T Zombie_paper_rightleg_lower        n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_RIGHTLEG_LOWER found=True
+   T Zombie_paper_rightfoot             n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_RIGHTFOOT      found=True
+   T Zombie_paper_leftleg_upper         n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_LEFTLEG_UPPER  found=True
+   T Zombie_paper_leftleg_lower         n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_LEFTLEG_LOWER  found=True
+   T Zombie_paper_leftfoot              n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_LEFTFOOT       found=True
+   T Zombie_paper_lowerbody1            n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_LOWERBODY1     found=True
+   T Zombie_paper_body                  n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_BODY           found=True
+   T Zombie_paper_leftarm_upper         n=216 vis=216 sym=IMAGE_REANIM_ZOMBIE_PAPER_LEFTARM_UPPER  found=True
+   T Zombie_paper_leftarm_lower         n=216 vis=180 sym=IMAGE_REANIM_ZOMBIE_PAPER_LEFTARM_LOWER  found=True
+   T anim_hair                          n=216 vis=180 sym=IMAGE_REANIM_ZOMBIE_HAIR                 found=True
+   T anim_head1                         n=216 vis=167 sym=IMAGE_REANIM_ZOMBIE_HEAD                 found=True
+   T anim_head_look                     n=216 vis= 13 sym=IMAGE_REANIM_ZOMBIE_PAPER_HEAD_LOOK      found=True
+   T anim_head_pupils                   n=216 vis= 13 sym=IMAGE_REANIM_ZOMBIE_PUPILS               found=True
+   T anim_hairpiece                     n=216 vis=180 sym=IMAGE_REANIM_ZOMBIE_PAPER_HAIRPIECE      found=True
+   T anim_head_jaw                      n=216 vis=180 sym=IMAGE_REANIM_ZOMBIE_JAW                  found=True
+   T anim_head_glasses                  n=216 vis=180 sym=IMAGE_REANIM_ZOMBIE_PAPER_GLASSES        found=True
+   T Zombie_paper_paper                 n=216 vis= 96 sym=IMAGE_REANIM_ZOMBIE_PAPER_PAPER1         found=True
+   T Zombie_paper_hands                 n=216 vis=180 sym=IMAGE_REANIM_ZOMBIE_PAPER_HANDS          found=True
+  anims: 14 ['death', 'eat', 'eatnopaper', 'gasp', 'hair', 'hairpiece', 'head1', 'headglasses', 'headjaw', 'headlook', 'headpupils', 'idle', 'walk', 'walknopaper']
+  picked: [('walk', 25, 72), ('eat', 72, 96), ('die', 96, 132), ('special', 132, 145)]
+  cell 788x1037 ox=693.8 oy=888.0 missing=0 []
+  walk      24 fr  788x1037   150.5 KB parts/frame [20, 20, 20, 20, 20, 19]
+  eat       24 fr  788x1037   131.6 KB parts/frame [20, 20, 20, 20, 20, 20]
+  die       36 fr  788x1037   192.6 KB parts/frame [13, 13, 13, 13, 13, 13]
+  special   13 fr  788x1037    42.8 KB parts/frame [21, 21, 21, 21, 21, 21]
 baking Zombie_cone <- Zombie
-  no clips for Zombie_cone
+  tracks: 42
+   T anim_superlongdeath                n=504 vis=137 sym=                                         found=-
+   T anim_swim                          n=504 vis= 42 sym=                                         found=-
+   T anim_death2                        n=504 vis= 33 sym=                                         found=-
+   T anim_death                         n=504 vis= 39 sym=                                         found=-
+   T anim_walk2                         n=504 vis= 47 sym=                                         found=-
+   T anim_walk                          n=504 vis= 47 sym=                                         found=-
+   T anim_idle2                         n=504 vis= 15 sym=                                         found=-
+   T anim_idle                          n=504 vis= 29 sym=                                         found=-
+   T anim_eat                           n=504 vis= 40 sym=                                         found=-
+   T anim_waterdeath                    n=504 vis= 25 sym=                                         found=-
+   T anim_dance                         n=504 vis= 50 sym=                                         found=-
+   T _ground                            n=504 vis=  0 sym=                                         found=-
+   T anim_innerarm3                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_HAND        found=True
+   T anim_innerarm2                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_LOWER       found=True
+   T anim_innerarm1                     n=504 vis=496 sym=IMAGE_REANIM_ZOMBIE_INNERARM_UPPER       found=True
+   T Zombie_flaghand                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_FLAGHAND             found=True
+   T Zombie_innerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR  found=True
+   T Zombie_neck                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_NECK                 found=True
+   T anim_head1                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HEAD                 found=True
+   T Zombie_innerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_UPPER       found=True
+   T Zombie_innerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_LOWER       found=True
+   T Zombie_innerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_FOOT        found=True
+   T Zombie_outerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_UPPER       found=True
+   T Zombie_outerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_FOOT        found=True
+   T Zombie_outerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_LOWER       found=True
+   T Zombie_body                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_BODY                 found=True
+   T Zombie_duckytube                   n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_DUCKYTUBE            found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_tie                         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TIE                  found=True
+   T anim_head2                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_JAW                  found=True
+   T anim_tongue                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TONGUE               found=True
+   T Zombie_mustache                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_MUSTACHE1            found=True
+   T anim_screendoor                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_SCREENDOOR1          found=True
+   T Zombie_innerarm_screendoor_hand    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR_ found=True
+   T Zombie_outerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_SCREENDOOR  found=True
+   T Zombie_outerarm_hand               n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_HAND        found=True
+   T Zombie_outerarm_upper              n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_UPPER       found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_outerarm_lower              n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_LOWER       found=True
+   T anim_hair                          n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HAIR                 found=True
+   T anim_cone                          n=504 vis=504 sym=IMAGE_REANIM_ZOMBIE_CONE1                found=True
+   T anim_bucket                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_BUCKET1              found=True
+  anims: 18 ['cone', 'dance', 'death', 'death2', 'eat', 'hair', 'head1', 'head2', 'idle', 'idle2', 'innerarm1', 'innerarm2', 'innerarm3', 'superlongdeath', 'swim', 'walk', 'walk2', 'waterdeath']
+  picked: [('walk', 44, 91), ('eat', 138, 178), ('die', 178, 217), ('special', 454, 504)]
+  cell 550x679 ox=456.1 oy=544.7 missing=0 []
+  walk      24 fr  550x 679    95.7 KB parts/frame [18, 18, 18, 18, 18, 18]
+  eat       40 fr  550x 679   143.4 KB parts/frame [18, 18, 18, 18, 18, 18]
+  die       39 fr  550x 679   177.7 KB parts/frame [15, 15, 15, 15, 15, 15]
+  special   25 fr  550x 679    85.0 KB parts/frame [18, 18, 17, 18, 18, 18]
 baking Zombie_bucket <- Zombie
-  no clips for Zombie_bucket
+  tracks: 42
+   T anim_superlongdeath                n=504 vis=137 sym=                                         found=-
+   T anim_swim                          n=504 vis= 42 sym=                                         found=-
+   T anim_death2                        n=504 vis= 33 sym=                                         found=-
+   T anim_death                         n=504 vis= 39 sym=                                         found=-
+   T anim_walk2                         n=504 vis= 47 sym=                                         found=-
+   T anim_walk                          n=504 vis= 47 sym=                                         found=-
+   T anim_idle2                         n=504 vis= 15 sym=                                         found=-
+   T anim_idle                          n=504 vis= 29 sym=                                         found=-
+   T anim_eat                           n=504 vis= 40 sym=                                         found=-
+   T anim_waterdeath                    n=504 vis= 25 sym=                                         found=-
+   T anim_dance                         n=504 vis= 50 sym=                                         found=-
+   T _ground                            n=504 vis=  0 sym=                                         found=-
+   T anim_innerarm3                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_HAND        found=True
+   T anim_innerarm2                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_LOWER       found=True
+   T anim_innerarm1                     n=504 vis=496 sym=IMAGE_REANIM_ZOMBIE_INNERARM_UPPER       found=True
+   T Zombie_flaghand                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_FLAGHAND             found=True
+   T Zombie_innerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR  found=True
+   T Zombie_neck                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_NECK                 found=True
+   T anim_head1                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HEAD                 found=True
+   T Zombie_innerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_UPPER       found=True
+   T Zombie_innerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_LOWER       found=True
+   T Zombie_innerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_FOOT        found=True
+   T Zombie_outerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_UPPER       found=True
+   T Zombie_outerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_FOOT        found=True
+   T Zombie_outerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_LOWER       found=True
+   T Zombie_body                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_BODY                 found=True
+   T Zombie_duckytube                   n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_DUCKYTUBE            found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_tie                         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TIE                  found=True
+   T anim_head2                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_JAW                  found=True
+   T anim_tongue                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TONGUE               found=True
+   T Zombie_mustache                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_MUSTACHE1            found=True
+   T anim_screendoor                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_SCREENDOOR1          found=True
+   T Zombie_innerarm_screendoor_hand    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR_ found=True
+   T Zombie_outerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_SCREENDOOR  found=True
+   T Zombie_outerarm_hand               n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_HAND        found=True
+   T Zombie_outerarm_upper              n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_UPPER       found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_outerarm_lower              n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_LOWER       found=True
+   T anim_hair                          n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HAIR                 found=True
+   T anim_cone                          n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_CONE1                found=True
+   T anim_bucket                        n=504 vis=504 sym=IMAGE_REANIM_ZOMBIE_BUCKET1              found=True
+  anims: 18 ['bucket', 'dance', 'death', 'death2', 'eat', 'hair', 'head1', 'head2', 'idle', 'idle2', 'innerarm1', 'innerarm2', 'innerarm3', 'superlongdeath', 'swim', 'walk', 'walk2', 'waterdeath']
+  picked: [('walk', 44, 91), ('eat', 138, 178), ('die', 178, 217), ('special', 454, 504)]
+  cell 544x679 ox=456.1 oy=544.7 missing=0 []
+  walk      24 fr  544x 679    89.1 KB parts/frame [18, 18, 18, 18, 18, 18]
+  eat       40 fr  544x 679   138.2 KB parts/frame [18, 18, 18, 18, 18, 18]
+  die       39 fr  544x 679   178.1 KB parts/frame [15, 15, 15, 15, 15, 15]
+  special   25 fr  544x 679    81.3 KB parts/frame [18, 18, 17, 18, 18, 18]
 baking Zombie_screendoor <- Zombie
-  no clips for Zombie_screendoor
+  tracks: 42
+   T anim_superlongdeath                n=504 vis=137 sym=                                         found=-
+   T anim_swim                          n=504 vis= 42 sym=                                         found=-
+   T anim_death2                        n=504 vis= 33 sym=                                         found=-
+   T anim_death                         n=504 vis= 39 sym=                                         found=-
+   T anim_walk2                         n=504 vis= 47 sym=                                         found=-
+   T anim_walk                          n=504 vis= 47 sym=                                         found=-
+   T anim_idle2                         n=504 vis= 15 sym=                                         found=-
+   T anim_idle                          n=504 vis= 29 sym=                                         found=-
+   T anim_eat                           n=504 vis= 40 sym=                                         found=-
+   T anim_waterdeath                    n=504 vis= 25 sym=                                         found=-
+   T anim_dance                         n=504 vis= 50 sym=                                         found=-
+   T _ground                            n=504 vis=  0 sym=                                         found=-
+   T anim_innerarm3                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_HAND        found=True
+   T anim_innerarm2                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_LOWER       found=True
+   T anim_innerarm1                     n=504 vis=496 sym=IMAGE_REANIM_ZOMBIE_INNERARM_UPPER       found=True
+   T Zombie_flaghand                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_FLAGHAND             found=True
+   T Zombie_innerarm_screendoor         n=504 vis=504 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR  found=True
+   T Zombie_neck                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_NECK                 found=True
+   T anim_head1                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HEAD                 found=True
+   T Zombie_innerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_UPPER       found=True
+   T Zombie_innerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_LOWER       found=True
+   T Zombie_innerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_FOOT        found=True
+   T Zombie_outerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_UPPER       found=True
+   T Zombie_outerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_FOOT        found=True
+   T Zombie_outerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_LOWER       found=True
+   T Zombie_body                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_BODY                 found=True
+   T Zombie_duckytube                   n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_DUCKYTUBE            found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_tie                         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TIE                  found=True
+   T anim_head2                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_JAW                  found=True
+   T anim_tongue                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TONGUE               found=True
+   T Zombie_mustache                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_MUSTACHE1            found=True
+   T anim_screendoor                    n=504 vis=504 sym=IMAGE_REANIM_ZOMBIE_SCREENDOOR1          found=True
+   T Zombie_innerarm_screendoor_hand    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR_ found=True
+   T Zombie_outerarm_screendoor         n=504 vis=504 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_SCREENDOOR  found=True
+   T Zombie_outerarm_hand               n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_HAND        found=True
+   T Zombie_outerarm_upper              n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_UPPER       found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_outerarm_lower              n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_LOWER       found=True
+   T anim_hair                          n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HAIR                 found=True
+   T anim_cone                          n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_CONE1                found=True
+   T anim_bucket                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_BUCKET1              found=True
+  anims: 18 ['dance', 'death', 'death2', 'eat', 'hair', 'head1', 'head2', 'idle', 'idle2', 'innerarm1', 'innerarm2', 'innerarm3', 'screendoor', 'superlongdeath', 'swim', 'walk', 'walk2', 'waterdeath']
+  picked: [('walk', 44, 91), ('eat', 138, 178), ('die', 178, 217), ('special', 454, 504)]
+  cell 544x679 ox=456.1 oy=544.7 missing=0 []
+  walk      24 fr  544x 679   116.6 KB parts/frame [20, 20, 20, 20, 20, 20]
+  eat       40 fr  544x 679   157.3 KB parts/frame [20, 20, 20, 20, 20, 20]
+  die       39 fr  544x 679   188.2 KB parts/frame [17, 17, 17, 17, 17, 17]
+  special   25 fr  544x 679    90.8 KB parts/frame [20, 20, 19, 20, 20, 20]
 baking Zombie_duckytube <- Zombie
-  no clips for Zombie_duckytube
-total 0.00 MB over 0 chars
+  tracks: 42
+   T anim_superlongdeath                n=504 vis=137 sym=                                         found=-
+   T anim_swim                          n=504 vis= 42 sym=                                         found=-
+   T anim_death2                        n=504 vis= 33 sym=                                         found=-
+   T anim_death                         n=504 vis= 39 sym=                                         found=-
+   T anim_walk2                         n=504 vis= 47 sym=                                         found=-
+   T anim_walk                          n=504 vis= 47 sym=                                         found=-
+   T anim_idle2                         n=504 vis= 15 sym=                                         found=-
+   T anim_idle                          n=504 vis= 29 sym=                                         found=-
+   T anim_eat                           n=504 vis= 40 sym=                                         found=-
+   T anim_waterdeath                    n=504 vis= 25 sym=                                         found=-
+   T anim_dance                         n=504 vis= 50 sym=                                         found=-
+   T _ground                            n=504 vis=  0 sym=                                         found=-
+   T anim_innerarm3                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_HAND        found=True
+   T anim_innerarm2                     n=504 vis=474 sym=IMAGE_REANIM_ZOMBIE_INNERARM_LOWER       found=True
+   T anim_innerarm1                     n=504 vis=496 sym=IMAGE_REANIM_ZOMBIE_INNERARM_UPPER       found=True
+   T Zombie_flaghand                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_FLAGHAND             found=True
+   T Zombie_innerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR  found=True
+   T Zombie_neck                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_NECK                 found=True
+   T anim_head1                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HEAD                 found=True
+   T Zombie_innerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_UPPER       found=True
+   T Zombie_innerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_LOWER       found=True
+   T Zombie_innerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_INNERLEG_FOOT        found=True
+   T Zombie_outerleg_upper              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_UPPER       found=True
+   T Zombie_outerleg_foot               n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_FOOT        found=True
+   T Zombie_outerleg_lower              n=504 vis=437 sym=IMAGE_REANIM_ZOMBIE_OUTERLEG_LOWER       found=True
+   T Zombie_body                        n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_BODY                 found=True
+   T Zombie_duckytube                   n=504 vis=504 sym=IMAGE_REANIM_ZOMBIE_DUCKYTUBE            found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_tie                         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TIE                  found=True
+   T anim_head2                         n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_JAW                  found=True
+   T anim_tongue                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_TONGUE               found=True
+   T Zombie_mustache                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_MUSTACHE1            found=True
+   T anim_screendoor                    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_SCREENDOOR1          found=True
+   T Zombie_innerarm_screendoor_hand    n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_INNERARM_SCREENDOOR_ found=True
+   T Zombie_outerarm_screendoor         n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_SCREENDOOR  found=True
+   T Zombie_outerarm_hand               n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_HAND        found=True
+   T Zombie_outerarm_upper              n=504 vis=501 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_UPPER       found=True
+   T Zombie_whitewater                  n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_WHITEWATER1          found=True
+   T Zombie_outerarm_lower              n=504 vis=342 sym=IMAGE_REANIM_ZOMBIE_OUTERARM_LOWER       found=True
+   T anim_hair                          n=504 vis=270 sym=IMAGE_REANIM_ZOMBIE_HAIR                 found=True
+   T anim_cone                          n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_CONE1                found=True
+   T anim_bucket                        n=504 vis=  0 sym=IMAGE_REANIM_ZOMBIE_BUCKET1              found=True
+  anims: 17 ['dance', 'death', 'death2', 'eat', 'hair', 'head1', 'head2', 'idle', 'idle2', 'innerarm1', 'innerarm2', 'innerarm3', 'superlongdeath', 'swim', 'walk', 'walk2', 'waterdeath']
+  picked: [('walk', 44, 91), ('eat', 138, 178), ('die', 178, 217), ('special', 454, 504)]
+  cell 544x679 ox=456.1 oy=544.7 missing=0 []
+  walk      24 fr  544x 679    94.9 KB parts/frame [18, 18, 18, 18, 18, 18]
+  eat       40 fr  544x 679   140.3 KB parts/frame [18, 18, 18, 18, 18, 18]
+  die       39 fr  544x 679   181.1 KB parts/frame [15, 15, 15, 15, 15, 15]
+  special   25 fr  544x 679    81.3 KB parts/frame [18, 18, 17, 18, 18, 18]
+total 4.90 MB over 10 chars
