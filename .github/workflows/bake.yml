@@ -45,18 +45,21 @@ jobs:
         run: |
           git config user.name  bake-bot
           git config user.email bake-bot@users.noreply.github.com
-          mkdir -p out_reports
+          rm -rf out_reports && mkdir -p out_reports
           cp -f bake.log out_reports/bake.log 2>/dev/null || true
           cp -f inventory.json out_reports/inventory.json 2>/dev/null || true
           cp -f report.json out_reports/report.json 2>/dev/null || true
           cp -f manifest.json out_reports/manifest.json 2>/dev/null || true
           cp -f contact_*.png out_reports/ 2>/dev/null || true
+          cp -rf tracks out_reports/ 2>/dev/null || true
           git add -f out_reports
           git commit -m "bake run $(date -u +%Y%m%dT%H%M%SZ)" || true
           git push || true
 
       - name: publish sheets bundle
         if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -f reanim-assets.tar ]; then
             gh release delete bake-latest --yes --cleanup-tag 2>/dev/null || true
@@ -64,8 +67,6 @@ jobs:
               --title "baked reanim sheets" \
               --notes "auto-baked $(date -u +%Y%m%dT%H%M%SZ)" 2>/dev/null || true
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: upload artifact
         if: always()
