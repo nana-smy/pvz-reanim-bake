@@ -1,16 +1,5 @@
 #!/usr/bin/env python3
-# Bake original PvZ1 .reanim part animations into packed WebP sprite strips (grid atlas).
-#
-# Reanim model (PvZ 2009 .reanim XML):
-#   fps          12 for every stock animation
-#   track/name   one channel; each <t> carries only the fields that CHANGED
-#                (carry-forward into the next <t>)
-#   x,y          position, y axis points UP, origin = character feet (bottom of cell)
-#   sx,sy        scale, kx,ky skew in degrees, a rotation in degrees (CCW)
-#   f            image index, <0 hides the part (default when absent = visible)
-#   i            image symbol, e.g. IMAGE_REANIM_ZOMBIE_BODY
-#   anim_*       track holding only visibility markers: a run of f>=0 frames
-#                between two f<0 frames is one loop of that animation
+# Bake original PvZ1 .reanim part animations into packed WebP sprite grids.
 import json
 import math
 import os
@@ -28,6 +17,7 @@ QUALITY = int(os.environ.get('QUALITY', '78'))
 MAX_W = 16000
 MAX_FRAMES = 40
 PAD = 2
+DIAG = MODE == 'samples'
 
 SAMPLES = ['Chomper', 'PeaShooter', 'SunFlower', 'Wallnut', 'Cabbagepult',
            'Zombie', 'Zombie_cone', 'Zombie_bucket', 'Zombie_screendoor', 'Zombie_duckytube',
@@ -126,6 +116,7 @@ def read_reanim(path):
 
 
 def resolve(frames):
+    has_i = any('i' in fr for fr in frames)
     cur = dict(DEFAULTS)
     out = []
     for fr in frames:
@@ -134,7 +125,7 @@ def resolve(frames):
                 cur[k] = float(v)
             elif k == 'i':
                 cur['i'] = v
-        if cur['i'] is None:
+        if has_i and cur['i'] is None:
             cur['f'] = -1.0
         out.append(dict(cur))
     return out
@@ -185,7 +176,6 @@ class Xform(object):
         tkx = math.tan(math.radians(fr['kx'])) if abs(fr['kx']) < 89.0 else 0.0
         tky = math.tan(math.radians(fr['ky'])) if abs(fr['ky']) < 89.0 else 0.0
         c, s = math.cos(th), math.sin(th)
-        # M = R * Scale * Shear
         self.m00 = c * self.sx - s * self.sy * tky
         self.m01 = c * self.sx * tkx - s * self.sy
         self.m10 = s * self.sx + c * self.sy * tky
@@ -203,7 +193,6 @@ class Xform(object):
                 max(p[0] for p in pts), max(p[1] for p in pts))
 
     def affine(self, w, h, ox, oy, offx, offy):
-        # PIL wants OUTPUT->INPUT, so invert the forward matrix.
         cx = ox + self.x + self.m01 * h
         cy = oy - self.y - self.m11 * h
         det = self.m00 * self.m11 - self.m01 * self.m10
@@ -229,10 +218,13 @@ def paste_part(canvas, part, fr, scale, ox, oy):
     dw = int(math.ceil(bb[2] - bb[0])) + 1
     dh = int(math.ceil(bb[3] - bb[1])) + 1
     if dw <= 0 or dh <= 0 or dw > 6000 or dh > 6000:
-        return
+        return False
     out = part.transform((dw, dh), Image.AFFINE, xf.affine(w, h, ox, oy, bb[0], bb[1]),
                          resample=Image.BICUBIC)
+    if out.getchannel('A').getbbox() is None:
+        return False
     canvas.alpha_composite(out, (int(round(bb[0])), int(round(bb[1]))))
+    return True
 
 
 def char_cell(resolved, order, clips, index, scale, missing):
@@ -271,6 +263,7 @@ def char_cell(resolved, order, clips, index, scale, missing):
 def render_frame(resolved, order, i, index, scale, cell):
     W, H, ox, oy = cell
     canvas = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    drawn = 0
     for tn in order:
         fr_all = resolved[tn]
         if i >= len(fr_all):
@@ -281,8 +274,9 @@ def render_frame(resolved, order, i, index, scale, cell):
         p = image_of(fr['i'], index)
         if not p:
             continue
-        paste_part(canvas, load_img(p), fr, scale, ox, oy)
-    return canvas
+        if paste_part(canvas, load_img(p), fr, scale, ox, oy):
+            drawn += 1
+    return canvas, drawn
 
 
 def pack_grid(frames, char, clip, cw, ch):
@@ -350,6 +344,10 @@ def pick_clips(resolved, order, family):
         start = max(0, min(firsts) - 1)
         if start >= 2:
             out.insert(0, ('idle', 0, start))
+    if DIAG:
+        names = sorted(anims)
+        print('  anims:', len(names), names[:24])
+        print('  picked:', [(c[0], c[1], c[2]) for c in out])
     return out[:5]
 
 
@@ -381,6 +379,10 @@ def variant_forces(variant):
 
 def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
     fps, tracks, order = read_reanim(path)
+    if DIAG:
+        print('  tracks:', len(order))
+        for tn in order[:3] + order[-3:]:
+            print('   raw', tn, ET.tostring_tostr) if False else None
     variant, base = '', key
     for v in ZOMBIE_VARIANTS:
         if key.endswith('_' + v):
@@ -395,6 +397,14 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
     hides, shows = variant_forces(variant)
     apply_forces(resolved, hides, shows)
 
+    if DIAG:
+        for tn in order:
+            fr_all = resolved[tn]
+            vis = sum(1 for fr in fr_all if fr['f'] >= 0)
+            sym = next((fr['i'] for fr in fr_all if fr['i']), '')
+            print('   T %-34s n=%3d vis=%3d sym=%-40s found=%s' %
+                  (tn, len(fr_all), vis, sym[:40], bool(image_of(sym, index)) if sym else '-'))
+
     clips = pick_clips(resolved, order, family)
     if not clips:
         print('  no clips for', key)
@@ -405,7 +415,7 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
         print('  empty cell for', key)
         return 0
     W, H, ox, oy = cell
-    print('  cell %dx%d  clips=%s' % (W, H, [c[0] for c in clips]))
+    print('  cell %dx%d ox=%.1f oy=%.1f missing=%d %s' % (W, H, ox, oy, len(missing), sorted(missing)[:6]))
 
     entry = {'w': W, 'h': H, 'ax': round(ox, 1), 'ay': round(oy, 1), 'fps': int(fps), 'clips': {}}
     rows, total, empty = [], 0, 0
@@ -414,20 +424,23 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
         step = 1
         while n / step > MAX_FRAMES:
             step += 1
-        frames = [render_frame(resolved, order, i, index, scale, cell) for i in range(s, e)][::step]
+        pairs = [render_frame(resolved, order, i, index, scale, cell) for i in range(s, e)][::step]
+        frames = [p[0] for p in pairs]
+        drawn = [p[1] for p in pairs]
         if len(frames) < 2:
             continue
         filled = sum(1 for f in frames if f.getchannel('A').getbbox())
         if filled == 0:
             empty += 1
-            print('  !! EMPTY clip', label)
+            print('  !! EMPTY clip', label, 'drawn/frame', drawn[:6])
             continue
         p, cols, rr, nbytes, size = pack_grid(frames, key, label, W, H)
         entry['clips'][label] = {'file': 'reanim/%s/%s.webp' % (key, label), 'frames': len(frames),
                                  'cols': cols, 'rows': rr, 'fps': round(fps / step, 2),
                                  'bytes': nbytes}
         total += nbytes
-        print('  %-8s %3d fr %4dx%4d %7.1f KB' % (label, len(frames), W, H, nbytes / 1024.0))
+        print('  %-8s %3d fr %4dx%4d %7.1f KB parts/frame %s' %
+              (label, len(frames), W, H, nbytes / 1024.0, drawn[:6]))
         rows.append((label, frames))
     if not entry['clips']:
         return 0
