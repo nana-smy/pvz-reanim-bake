@@ -1,10 +1,4 @@
-source /tmp/pvz/reanim: 146 reanim, 1788 png
-inventory: 146 reanim
-sample targets: ['Chomper', 'Zombie', 'Zombie_gargantuar']
-baking Chomper
-  FAILED Chomper junk after document element: line 2, column 0
-baking Zombie
-  FAILED Zombie junk after document element: line 2, column 0
-baking Zombie_gargantuar
-  FAILED Zombie_gargantuar junk after document element: line 2, column 0
-total baked bytes: 0.00 MB
+  File "/home/runner/work/pvz-reanim-bake/pvz-reanim-bake/bake_reanim.py", line 309
+    lines.append('  %-28s n=%-3d visible=%-12s %s' % (tn, len(frames),
+                ^
+SyntaxError: '(' was never closed
