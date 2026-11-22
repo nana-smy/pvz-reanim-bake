@@ -66,23 +66,22 @@ ZOMBIES = {
 ZOMBIE_VARIANTS = ['cone', 'bucket', 'screendoor', 'duckytube']
 
 PLANT_CLIPS = [
-    ('idle', ['full_idle', 'idle', 'idle2', 'head_idle']),
-    ('shoot', ['shooting', 'shoot', 'full_shooting', 'spit']),
+    ('idle', ['fullidle', 'idle', 'idle2', 'headidle']),
+    ('shoot', ['shooting', 'shoot', 'fullshooting', 'spit']),
     ('special', ['bite', 'chew', 'swallow', 'squash', 'explode', 'rise', 'plant',
-                 'grow', 'spin', 'shield', 'open', 'strike', 'throw']),
+                 'grow', 'spin', 'shield', 'open', 'strike', 'throw', 'sleep']),
 ]
 ZOMBIE_CLIPS = [
-    ('walk', ['walk', 'walk2', 'walk_nopaper']),
-    ('eat', ['eat', 'eat_nopaper']),
+    ('walk', ['walk', 'walk2', 'walknopaper']),
+    ('eat', ['eat', 'eatnopaper']),
     ('die', ['death', 'death2']),
     ('special', ['smash', 'throw', 'dance', 'swim', 'grab', 'raise', 'hold', 'gasp',
-                 'grow', 'explode', 'plant', 'rising']),
+                 'grow', 'explode', 'plant', 'rising', 'jump', 'fly']),
 ]
 
 FKEYS = ('x', 'y', 'a', 'sx', 'sy', 'kx', 'ky', 'f')
 DEFAULTS = {'x': 0.0, 'y': 0.0, 'a': 0.0, 'sx': 1.0, 'sy': 1.0,
             'kx': 0.0, 'ky': 0.0, 'f': 0.0, 'i': None}
-
 
 HIDE_ALWAYS = ['_ground', 'Zombie_whitewater', 'Zombie_mustache', 'anim_tongue',
                'Zombie_flaghand', 'Zombie_tie', 'anim_screendoor',
@@ -183,8 +182,8 @@ class Xform(object):
         self.sx = fr['sx'] * scale
         self.sy = fr['sy'] * scale
         th = math.radians(fr['a'])
-        tkx = math.tan(math.radians(fr['kx']))
-        tky = math.tan(math.radians(fr['ky']))
+        tkx = math.tan(math.radians(fr['kx'])) if abs(fr['kx']) < 89.0 else 0.0
+        tky = math.tan(math.radians(fr['ky'])) if abs(fr['ky']) < 89.0 else 0.0
         c, s = math.cos(th), math.sin(th)
         # M = R * Scale * Shear
         self.m00 = c * self.sx - s * self.sy * tky
@@ -204,22 +203,32 @@ class Xform(object):
                 max(p[0] for p in pts), max(p[1] for p in pts))
 
     def affine(self, w, h, ox, oy, offx, offy):
-        a = self.m00
-        b = -self.m01
-        c = ox + self.x + self.m01 * h - offx
-        d = -self.m10
-        e = self.m11
-        f = oy - self.y - self.m11 * h - offy
+        # PIL wants OUTPUT->INPUT, so invert the forward matrix.
+        cx = ox + self.x + self.m01 * h
+        cy = oy - self.y - self.m11 * h
+        det = self.m00 * self.m11 - self.m01 * self.m10
+        if abs(det) < 1e-5:
+            det = 1e-5
+        i00 = self.m11 / det
+        i01 = self.m01 / det
+        i10 = self.m10 / det
+        i11 = self.m00 / det
+        a = i00
+        b = i01
+        c = i00 * (offx - cx) + i01 * (offy - cy)
+        d = i10
+        e = i11
+        f = i10 * (offx - cx) + i11 * (offy - cy)
         return (a, b, c, d, e, f)
 
 
-def paste_part(canvas, part, fr, scale, ox, oy, minx, miny):
+def paste_part(canvas, part, fr, scale, ox, oy):
     w, h = part.size
     xf = Xform(fr, scale)
     bb = xf.map_bbox(w, h, ox, oy)
     dw = int(math.ceil(bb[2] - bb[0])) + 1
     dh = int(math.ceil(bb[3] - bb[1])) + 1
-    if dw <= 0 or dh <= 0 or dw > 4000 or dh > 4000:
+    if dw <= 0 or dh <= 0 or dw > 6000 or dh > 6000:
         return
     out = part.transform((dw, dh), Image.AFFINE, xf.affine(w, h, ox, oy, bb[0], bb[1]),
                          resample=Image.BICUBIC)
@@ -231,8 +240,7 @@ def char_cell(resolved, order, clips, index, scale, missing):
     maxx = maxy = -1e9
     total = 0
     for tn in order:
-        fr_all = resolved[tn]
-        total = max(total, len(fr_all))
+        total = max(total, len(resolved[tn]))
     for _, s, e in clips:
         for i in range(s, min(e, total)):
             for tn in order:
@@ -257,11 +265,11 @@ def char_cell(resolved, order, clips, index, scale, missing):
     oy = maxy + PAD
     W = int(math.ceil(maxx - minx)) + 2 * PAD + 1
     H = int(math.ceil(maxy - miny)) + 2 * PAD + 1
-    return W, H, ox, oy, minx, miny
+    return W, H, ox, oy
 
 
 def render_frame(resolved, order, i, index, scale, cell):
-    W, H, ox, oy, minx, miny = cell
+    W, H, ox, oy = cell
     canvas = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     for tn in order:
         fr_all = resolved[tn]
@@ -273,7 +281,7 @@ def render_frame(resolved, order, i, index, scale, cell):
         p = image_of(fr['i'], index)
         if not p:
             continue
-        paste_part(canvas, load_img(p), fr, scale, ox, oy, minx, miny)
+        paste_part(canvas, load_img(p), fr, scale, ox, oy)
     return canvas
 
 
@@ -309,7 +317,7 @@ def contact(rows, path):
     y = 4
     for (label, sel), w in zip(picks, widths):
         row_h = max(f.size[1] for f in sel) * zoom
-        d.text((4, y + 2), '%s  (%d/%d)' % (label, len(sel), len(sel)), fill=(255, 232, 60, 255))
+        d.text((4, y + 2), '%s (%d frames)' % (label, len(sel)), fill=(255, 232, 60, 255))
         x = 4
         for f in sel:
             big = f.resize((max(1, f.size[0]) * zoom, max(1, f.size[1]) * zoom), Image.NEAREST)
@@ -357,12 +365,8 @@ def apply_forces(resolved, hides, shows):
                     fr['f'] = max(fr['f'], 0.0)
 
 
-def variant_forces(char, variant):
+def variant_forces(variant):
     hides = list(HIDE_ALWAYS)
-    low = char.lower()
-    if low.startswith('zombie') and 'imp' not in low and 'imp' not in char:
-        hides += [tn for tn in ('Zombie_imp_head', 'Zombie_imp_jaw', 'Zombie_imp_body1',
-                                'Zombie_imp_body2')]
     shows = []
     if variant == 'cone':
         shows.append('anim_cone')
@@ -377,16 +381,18 @@ def variant_forces(char, variant):
 
 def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
     fps, tracks, order = read_reanim(path)
-    variant = ''
-    base = key
+    variant, base = '', key
     for v in ZOMBIE_VARIANTS:
         if key.endswith('_' + v):
             variant, base = v, key[:-(len(v) + 1)]
             break
-    real = base
 
     resolved = {tn: resolve(tracks[tn]) for tn in order}
-    hides, shows = variant_forces(base, variant)
+    if base.startswith('Zombie') and 'imp' not in base.lower():
+        for tn in list(resolved):
+            if 'imp' in tn.lower() or 'whiterope' in tn.lower():
+                resolved[tn] = [dict(fr, f=-1.0) for fr in resolved[tn]]
+    hides, shows = variant_forces(variant)
     apply_forces(resolved, hides, shows)
 
     clips = pick_clips(resolved, order, family)
@@ -398,10 +404,11 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
     if not cell:
         print('  empty cell for', key)
         return 0
-    W, H, ox, oy, minx, miny = cell
+    W, H, ox, oy = cell
+    print('  cell %dx%d  clips=%s' % (W, H, [c[0] for c in clips]))
 
     entry = {'w': W, 'h': H, 'ax': round(ox, 1), 'ay': round(oy, 1), 'fps': int(fps), 'clips': {}}
-    rows, total = [], 0
+    rows, total, empty = [], 0, 0
     for label, s, e in clips:
         n = e - s
         step = 1
@@ -409,6 +416,11 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
             step += 1
         frames = [render_frame(resolved, order, i, index, scale, cell) for i in range(s, e)][::step]
         if len(frames) < 2:
+            continue
+        filled = sum(1 for f in frames if f.getchannel('A').getbbox())
+        if filled == 0:
+            empty += 1
+            print('  !! EMPTY clip', label)
             continue
         p, cols, rr, nbytes, size = pack_grid(frames, key, label, W, H)
         entry['clips'][label] = {'file': 'reanim/%s/%s.webp' % (key, label), 'frames': len(frames),
@@ -424,8 +436,8 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
     if sample_mode:
         contact(rows, 'contact_%s.png' % norm(key))
     manifest[key] = entry
-    report[key] = {'src': os.path.basename(path), 'clips': {k: v for k, v in entry['clips'].items()},
-                   'missing': len(missing)}
+    report[key] = {'src': os.path.basename(path), 'clips': entry['clips'],
+                   'missing': len(missing), 'empty': empty}
     return total
 
 
@@ -439,26 +451,23 @@ def main():
     os.makedirs(SHEETS, exist_ok=True)
 
     jobs = []
-    for src, gkey in sorted(PLANTS.items()):
+    for src in sorted(PLANTS):
         if norm(src) in files:
             jobs.append((src, 'plant', files[norm(src)]))
-    for src, gkey in sorted(ZOMBIES.items()):
+    for src in sorted(ZOMBIES):
         if norm(src) in files:
             jobs.append((src, 'zombie', files[norm(src)]))
-    var_jobs = []
     if norm('Zombie') in files:
         for v in ZOMBIE_VARIANTS:
-            var_jobs.append(('Zombie_' + v, 'zombie', files[norm('Zombie')]))
+            jobs.append(('Zombie_' + v, 'zombie', files[norm('Zombie')]))
+
     if MODE == 'samples':
         wanted = {norm(x) for x in SAMPLES}
         jobs = [j for j in jobs if norm(j[0]) in wanted]
-        var_jobs = [j for j in var_jobs if norm(j[0]) in wanted]
-        # a variant job may arrive via var_jobs only; add base if needed
-    all_jobs = jobs + var_jobs
-    print('jobs:', len(all_jobs))
+    print('jobs:', len(jobs))
 
     manifest, report, total = {}, {}, 0
-    for key, family, src in all_jobs:
+    for key, family, src in jobs:
         print('baking', key, '<-', src)
         try:
             total += bake_char(key, os.path.join(SRC, src + '.reanim'), family, index,
