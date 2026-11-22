@@ -1,0 +1,29 @@
+Zombie_polevaulter  fps=12.0  frames=193
+  anim_idle                  n=193 vis=-          
+  anim_run                   n=193 vis=13..49     
+  anim_jump                  n=193 vis=50..92     
+  anim_walk                  n=193 vis=93..137    
+  anim_death                 n=193 vis=138..164   
+  anim_eat                   n=193 vis=165..192   
+  _ground                    n=193 vis=13..137    
+  Zombie_polevaulter_pole2   n=193 vis=-          ZOMBIE_POLEVAULTER_POLE2
+  Zombie_polevaulter_pole    n=193 vis=-          ZOMBIE_POLEVAULTER_POLE
+  Zombie_polevaulter_innerhand n=193 vis=-          ZOMBIE_INNERARM_HAND ZOMBIE_POLEVAULTER_INNERHAND
+  Zombie_polevaulter_innerleg_upper n=193 vis=-          ZOMBIE_POLEVAULTER_INNERLEG_UPPER
+  Zombie_polevaulter_innerleg_foot n=193 vis=-          ZOMBIE_POLEVAULTER_INNERLEG_FOOT
+  Zombie_polevaulter_innerleg_toe n=193 vis=-          ZOMBIE_POLEVAULTER_INNERLEG_TOE
+  Zombie_polevaulter_innerleg_lower n=193 vis=-          ZOMBIE_POLEVAULTER_INNERLEG_LOWER
+  Zombie_polevaulter_outerleg_upper n=193 vis=-          ZOMBIE_POLEVAULTER_OUTERLEG_UPPER
+  Zombie_polevaulter_outerleg_foot n=193 vis=-          ZOMBIE_POLEVAULTER_OUTERLEG_FOOT
+  Zombie_polevaulter_outerleg_toe n=193 vis=-          ZOMBIE_POLEVAULTER_OUTERLEG_TOE
+  Zombie_polevaulter_outerleg_lower n=193 vis=-          ZOMBIE_POLEVAULTER_OUTERLEG_LOWER
+  Zombie_polevaulter_innerarm_upper n=193 vis=-          ZOMBIE_POLEVAULTER_INNERARM_UPPER
+  Zombie_polevaulter_innerarm_lower n=193 vis=-          ZOMBIE_POLEVAULTER_INNERARM_LOWER ZOMBIE_POLEVAULTER_OUTERARM_LOWER
+  Zombie_polevaulter_body2   n=193 vis=-          ZOMBIE_POLEVAULTER_BODY2
+  Zombie_polevaulter_body1   n=193 vis=-          ZOMBIE_POLEVAULTER_BODY1
+  anim_head1                 n=193 vis=165..192   ZOMBIE_HEAD
+  anim_head2                 n=193 vis=165..192   ZOMBIE_JAW
+  anim_hair                  n=193 vis=165..192   ZOMBIE_POLEVAULTER_HAIR
+  Zombie_outerarm_hand       n=193 vis=165..192   ZOMBIE_OUTERARM_HAND
+  Zombie_polevaulter_outerarm_upper n=193 vis=-          ZOMBIE_POLEVAULTER_OUTERARM_UPPER ZOMBIE_POLEVAULTER_OUTERARM_UPPER2
+  Zombie_polevaulter_outerarm_lower n=193 vis=165..192   ZOMBIE_POLEVAULTER_OUTERARM_LOWER

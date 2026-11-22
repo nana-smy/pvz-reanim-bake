@@ -1,0 +1,32 @@
+Zombie_paper  fps=12.0  frames=216
+  anim_death                 n=216 vis=96..131    
+  anim_eat                   n=216 vis=72..95     
+  anim_eat_nopaper           n=216 vis=192..215   
+  anim_walk                  n=216 vis=25..71     
+  anim_walk_nopaper          n=216 vis=145..191   
+  anim_idle                  n=216 vis=-          
+  anim_gasp                  n=216 vis=132..144   
+  _ground                    n=216 vis=25..191    
+  Zombie_paper_rightarm_upper n=216 vis=132..215   ZOMBIE_PAPER_RIGHTARM_UPPER
+  Zombie_paper_rightarm_lower n=216 vis=132..215   ZOMBIE_PAPER_RIGHTARM_LOWER
+  Zombie_paper_hands2        n=216 vis=96..215    ZOMBIE_PAPER_HANDS2
+  Zombie_paper_lowerbody2    n=216 vis=-          ZOMBIE_PAPER_LOWERBODY2
+  Zombie_paper_rightleg_upper n=216 vis=-          ZOMBIE_PAPER_RIGHTLEG_UPPER
+  Zombie_paper_rightleg_lower n=216 vis=-          ZOMBIE_PAPER_RIGHTLEG_LOWER
+  Zombie_paper_rightfoot     n=216 vis=-          ZOMBIE_PAPER_RIGHTFOOT
+  Zombie_paper_leftleg_upper n=216 vis=-          ZOMBIE_PAPER_LEFTLEG_UPPER
+  Zombie_paper_leftleg_lower n=216 vis=-          ZOMBIE_PAPER_LEFTLEG_LOWER
+  Zombie_paper_leftfoot      n=216 vis=-          ZOMBIE_PAPER_LEFTFOOT
+  Zombie_paper_lowerbody1    n=216 vis=-          ZOMBIE_PAPER_LOWERBODY1
+  Zombie_paper_body          n=216 vis=-          ZOMBIE_PAPER_BODY
+  Zombie_paper_leftarm_upper n=216 vis=-          ZOMBIE_PAPER_LEFTARM_UPPER ZOMBIE_PAPER_LEFTARM_UPPER2
+  Zombie_paper_leftarm_lower n=216 vis=132..215   ZOMBIE_PAPER_LEFTARM_LOWER
+  anim_hair                  n=216 vis=132..215   ZOMBIE_HAIR
+  anim_head1                 n=216 vis=145..215   ZOMBIE_HEAD
+  anim_head_look             n=216 vis=132..144   ZOMBIE_PAPER_HEAD_LOOK
+  anim_head_pupils           n=216 vis=132..144   ZOMBIE_PUPILS
+  anim_hairpiece             n=216 vis=132..215   ZOMBIE_PAPER_HAIRPIECE
+  anim_head_jaw              n=216 vis=132..215   ZOMBIE_JAW
+  anim_head_glasses          n=216 vis=132..215   ZOMBIE_PAPER_GLASSES
+  Zombie_paper_paper         n=216 vis=-          ZOMBIE_PAPER_PAPER1
+  Zombie_paper_hands         n=216 vis=132..215   ZOMBIE_PAPER_HANDS ZOMBIE_PAPER_HANDS3

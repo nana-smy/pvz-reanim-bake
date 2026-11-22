@@ -1,0 +1,43 @@
+Zombie  fps=12.0  frames=504
+  anim_superlongdeath        n=504 vis=292..428   
+  anim_swim                  n=504 vis=250..291   
+  anim_death2                n=504 vis=217..249   
+  anim_death                 n=504 vis=178..216   
+  anim_walk2                 n=504 vis=91..137    
+  anim_walk                  n=504 vis=44..90     
+  anim_idle2                 n=504 vis=29..43     
+  anim_idle                  n=504 vis=-          
+  anim_eat                   n=504 vis=138..177   
+  anim_waterdeath            n=504 vis=429..453   
+  anim_dance                 n=504 vis=454..503   
+  _ground                    n=504 vis=44..503    
+  anim_innerarm3             n=504 vis=217..503   ZOMBIE_INNERARM_HAND
+  anim_innerarm2             n=504 vis=217..503   ZOMBIE_INNERARM_LOWER
+  anim_innerarm1             n=504 vis=217..503   ZOMBIE_INNERARM_UPPER
+  Zombie_flaghand            n=504 vis=250..291   ZOMBIE_FLAGHAND
+  Zombie_innerarm_screendoor n=504 vis=250..291   ZOMBIE_INNERARM_SCREENDOOR
+  Zombie_neck                n=504 vis=454..503   ZOMBIE_NECK
+  anim_head1                 n=504 vis=250..503   ZOMBIE_HEAD
+  Zombie_innerleg_upper      n=504 vis=292..503   ZOMBIE_INNERLEG_UPPER
+  Zombie_innerleg_lower      n=504 vis=292..503   ZOMBIE_INNERLEG_LOWER
+  Zombie_innerleg_foot       n=504 vis=292..503   ZOMBIE_INNERLEG_FOOT
+  Zombie_outerleg_upper      n=504 vis=292..503   ZOMBIE_OUTERLEG_UPPER
+  Zombie_outerleg_foot       n=504 vis=292..503   ZOMBIE_OUTERLEG_FOOT
+  Zombie_outerleg_lower      n=504 vis=292..503   ZOMBIE_OUTERLEG_LOWER
+  Zombie_body                n=504 vis=454..503   ZOMBIE_BODY
+  Zombie_duckytube           n=504 vis=250..503   ZOMBIE_DUCKYTUBE ZOMBIE_DUCKYTUBE_INWATER
+  Zombie_whitewater          n=504 vis=429..453   ZOMBIE_SNORKLE_WHITEWATER1 ZOMBIE_SNORKLE_WHITEWATER2 ZOMBIE_SNORKLE_WHITEWATER3 ZOMBIE_WHITEWATER1
+  Zombie_tie                 n=504 vis=454..503   ZOMBIE_TIE
+  anim_head2                 n=504 vis=250..503   ZOMBIE_JAW
+  anim_tongue                n=504 vis=250..503   ZOMBIE_TONGUE
+  Zombie_mustache            n=504 vis=250..503   ZOMBIE_MUSTACHE1
+  anim_screendoor            n=504 vis=-          ZOMBIE_SCREENDOOR1
+  Zombie_innerarm_screendoor_hand n=504 vis=-          ZOMBIE_INNERARM_SCREENDOOR_HAND
+  Zombie_outerarm_screendoor n=504 vis=-          ZOMBIE_OUTERARM_SCREENDOOR
+  Zombie_outerarm_hand       n=504 vis=454..503   ZOMBIE_OUTERARM_HAND ZOMBIE_OUTERARM_HAND2
+  Zombie_outerarm_upper      n=504 vis=454..503   ZOMBIE_OUTERARM_UPPER ZOMBIE_OUTERARM_UPPER2
+  Zombie_whitewater          n=504 vis=429..453   ZOMBIE_SNORKLE_WHITEWATER1 ZOMBIE_SNORKLE_WHITEWATER2 ZOMBIE_SNORKLE_WHITEWATER3 ZOMBIE_WHITEWATER1
+  Zombie_outerarm_lower      n=504 vis=454..503   ZOMBIE_OUTERARM_LOWER
+  anim_hair                  n=504 vis=250..503   ZOMBIE_HAIR
+  anim_cone                  n=504 vis=250..503   ZOMBIE_CONE1
+  anim_bucket                n=504 vis=250..503   ZOMBIE_BUCKET1

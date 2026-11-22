@@ -1,0 +1,27 @@
+Zombie_dancer  fps=12.0  frames=100
+  anim_walk                  n=100 vis=-          
+  anim_armraise              n=100 vis=21..31     
+  anim_eat                   n=100 vis=32..64     
+  anim_death                 n=100 vis=65..99     
+  _ground                    n=100 vis=-          
+  Zombie_Jackson_innerarm_upper n=100 vis=-          ZOMBIE_DANCER_INNERARM_UPPER
+  Zombie_Jackson_innerarm_lower n=100 vis=-          ZOMBIE_DANCER_INNERARM_LOWER
+  Zombie_Jackson_innerarm_hand n=100 vis=-          ZOMBIE_DANCER_INNERARM_HAND
+  Zombie_Jackson_innerleg_lower n=100 vis=-          ZOMBIE_DANCER_INNERLEG_LOWER
+  Zombie_Jackson_innerleg_foot n=100 vis=-          ZOMBIE_DANCER_INNERLEG_FOOT
+  Zombie_Jackson_innerleg_upper n=100 vis=-          ZOMBIE_DANCER_INNERLEG_UPPER
+  Zombie_Jackson_body2       n=100 vis=-          ZOMBIE_DANCER_BODY2
+  Zombie_Jackson_outerleg_foot n=100 vis=-          ZOMBIE_DANCER_OUTERLEG_FOOT
+  Zombie_Jackson_outerleg_lower n=100 vis=-          ZOMBIE_DANCER_OUTERLEG_LOWER
+  Zombie_Jackson_outerleg_toe n=100 vis=-          ZOMBIE_DANCER_OUTERLEG_TOE
+  Zombie_Jackson_outerleg_upper n=100 vis=-          ZOMBIE_DANCER_OUTERLEG_UPPER
+  Zombie_dancer_belt         n=100 vis=-          ZOMBIE_DANCER_BELT
+  Zombie_Jackson_body1       n=100 vis=-          ZOMBIE_DANCER_BODY1
+  anim_head1                 n=100 vis=-          ZOMBIE_DANCER__HEAD
+  anim_head2                 n=100 vis=-          ZOMBIE_JAW
+  anim_earing                n=100 vis=-          ZOMBIE_DANCER_EARING
+  anim_hair                  n=100 vis=-          ZOMBIE_DANCER_HAIR
+  Zombie_Jackson_colar       n=100 vis=-          ZOMBIE_DANCER_COLAR
+  Zombie_Jackson_outerarm_upper n=100 vis=-          ZOMBIE_DANCER_OUTERARM_UPPER
+  Zombie_outerarm_lower      n=100 vis=-          ZOMBIE_DANCER_OUTERARM_LOWER
+  Zombie_outerarm_hand       n=100 vis=-          ZOMBIE_DANCER_OUTERARM_HAND

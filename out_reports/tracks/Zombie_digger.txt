@@ -1,0 +1,32 @@
+Zombie_digger  fps=16.0  frames=200
+  anim_idle                  n=200 vis=-          
+  anim_walk                  n=200 vis=18..54     
+  anim_eat                   n=200 vis=55..87     
+  anim_death                 n=200 vis=88..127    
+  anim_dig                   n=200 vis=128..145   
+  anim_drill                 n=200 vis=146..164   
+  anim_landing               n=200 vis=165..178   
+  anim_dizzy                 n=200 vis=179..199   
+  _ground                    n=200 vis=18..54     
+  Zombie_digger_innerarm_lower n=200 vis=146..199   ZOMBIE_DIGGER_INNERARM_LOWER
+  Zombie_digger_pickaxe      n=200 vis=131..199   ZOMBIE_DIGGER_PICKAXE
+  Zombie_digger_dirt         n=200 vis=107..127   ZOMBIE_DIGGER_DIRT
+  Zombie_digger_innerarm_hand n=200 vis=146..199   ZOMBIE_DIGGER_INNERARM_HAND
+  Zombie_digger_innerarm_upper n=200 vis=146..199   ZOMBIE_DIGGER_INNERARM_UPPER
+  Zombie_digger_innerleg_foot n=200 vis=146..199   ZOMBIE_DIGGER_INNERLEG_FOOT
+  Zombie_digger_innerleg_lower n=200 vis=146..199   ZOMBIE_DIGGER_INNERLEG_LOWER
+  Zombie_digger_innerleg_upper n=200 vis=146..199   ZOMBIE_DIGGER_INNERLEG_UPPER
+  Zombie_digger_body         n=200 vis=146..199   ZOMBIE_DIGGER_BODY
+  anim_head1                 n=200 vis=146..199   ZOMBIE_DIGGER_HEAD ZOMBIE_DIGGER_HEAD2
+  Zombie_digger_head_eye     n=200 vis=173..199   ZOMBIE_DIGGER_HEAD_EYE
+  Zombie_digger_head_eye     n=200 vis=173..199   ZOMBIE_DIGGER_HEAD_EYE
+  anim_head2                 n=200 vis=146..199   ZOMBIE_DIGGER_JAW
+  Zombie_digger_outerleg_foot n=200 vis=146..199   ZOMBIE_DIGGER_OUTERLEG_FOOL
+  Zombie_digger_outerleg_lower n=200 vis=146..199   ZOMBIE_DIGGER_OUTERLEG_LOWER
+  Zombie_digger_outerleg_upper n=200 vis=146..199   ZOMBIE_DIGGER_OUTERLEG_UPPER
+  Zombie_outerarm_hand       n=200 vis=146..199   ZOMBIE_DIGGER_OUTERARM_HAND
+  Zombie_outerarm_lower      n=200 vis=146..199   ZOMBIE_DIGGER_OUTERARM_LOWER
+  Zombie_digger_outerarm_upper n=200 vis=146..199   ZOMBIE_DIGGER_OUTERARM_UPPER ZOMBIE_DIGGER_OUTERARM_UPPER2
+  Zombie_digger_rise         n=200 vis=147..163   ZOMBIE_DIGGER_RISE2 ZOMBIE_DIGGER_RISE3 ZOMBIE_DIGGER_RISE4 ZOMBIE_DIGGER_RISE5 ZOMBIE_DIGGER_RISE6
+  Zombie_digger_hardhat      n=200 vis=128..199   ZOMBIE_DIGGER_HARDHAT
+  Zombie_digger_dig          n=200 vis=128..145   ZOMBIE_DIGGER_DIG0 ZOMBIE_DIGGER_DIG1 ZOMBIE_DIGGER_DIG2 ZOMBIE_DIGGER_DIG3 ZOMBIE_DIGGER_DIG4 ZOMBIE_DIGGER_DIG5
