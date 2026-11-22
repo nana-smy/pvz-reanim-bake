@@ -16,7 +16,7 @@ import math
 import os
 import sys
 import tarfile
-import xml.etree.ElementTree as ET
+from xml.etree import ElementTree as ET
 
 from PIL import Image, ImageDraw
 
@@ -27,8 +27,10 @@ MAX_W = 16000
 TARGET_BYTES = 15 * 1024 * 1024
 PAD = 2
 
-SAMPLES = ['Chomper', 'Peashooter', 'Zombie', 'Zombie_gargantuar', 'Zombie_newspaper',
-           'Zombie_duckytube']
+SAMPLES = ['Chomper', 'PeaShooter', 'Zombie', 'Zombie_gargantuar', 'Zombie_paper', 'Zombie_bungi']
+KEYCHARS = ['Zombie', 'Zombie_gargantuar', 'Zombie_boss', 'Zombie_paper', 'Zombie_bungi',
+            'Zombie_balloon', 'Zombie_digger', 'Zombie_polevaulter', 'Zombie_jackbox',
+            'Zombie_dancer', 'Chomper', 'PeaShooter', 'SunFlower', 'Wallnut', 'Cabbagepult']
 
 FKEYS = ('x', 'y', 'a', 'sx', 'sy', 'kx', 'ky', 'f')
 DEFAULTS = {'x': 0.0, 'y': 0.0, 'a': 0.0, 'sx': 1.0, 'sy': 1.0,
@@ -40,7 +42,12 @@ def norm(s):
 
 
 def read_reanim(path):
-    root = ET.parse(path).getroot()
+    raw = open(path, encoding='utf-8', errors='ignore').read()
+    start = raw.find('<fps')
+    if start < 0:
+        start = raw.find('<track')
+    body = raw[start:] if start > 0 else raw
+    root = ET.fromstring('<reanim>' + body + '</reanim>')
     try:
         fps = float(root.findtext('fps') or 12)
     except ValueError:
@@ -131,23 +138,33 @@ def paste_part(canvas, part, x, y, sx, sy, a, ox, oy):
     if abs(a) > 0.01:
         im = im.rotate(-a, expand=True, resample=Image.BICUBIC)
         W, H = im.size
-        cx, cy = sw / 2.0, sh / 2.0
-        dx, dy = -cx, sh - cy
+        dx, dy = -sw / 2.0, sh - sh / 2.0
         t = math.radians(-a)
         c, s = math.cos(t), math.sin(t)
         ax = W / 2.0 + dx * c - dy * s
         ay = H / 2.0 + dx * s + dy * c
     else:
         ax, ay = 0.0, float(sh)
-    canvas.alpha_composite(im, (int(round(ox + x - ax)), int(round(oy - y - ay))))
+    p = (int(round(ox + x - ax)), int(round(oy - y - ay)))
+    if p[0] > canvas.size[0] or p[1] > canvas.size[1] or p[0] + im.size[0] < 0 or p[1] + im.size[1] < 0:
+        return
+    canvas.alpha_composite(im, p)
+
+
+def visible(fr, forced):
+    if fr['f'] < 0 and fr['i'] is None:
+        return False
+    return True
 
 
 def render_clip(resolved, order, s, e, index, missing):
     minx = miny = 1e9
     maxx = maxy = -1e9
     used = 0
+    total = 0
     for tn in order:
         fr_all = resolved[tn]
+        total = max(total, len(fr_all))
         for i in range(s, min(e, len(fr_all))):
             fr = fr_all[i]
             if fr['f'] < 0:
@@ -171,7 +188,7 @@ def render_clip(resolved, order, s, e, index, missing):
     H = int(math.ceil(maxy - miny)) + PAD * 2 + 1
 
     frames = []
-    for i in range(s, e):
+    for i in range(s, min(e, total)):
         canvas = Image.new('RGBA', (W, H), (0, 0, 0, 0))
         for tn in order:
             fr_all = resolved[tn]
@@ -271,10 +288,29 @@ def bake_char(name, path, index, report, manifest, sample_mode):
         print('  !! missing images:', len(missing))
     if entry['clips']:
         manifest[name] = entry
-        report[name] = {'file': os.path.basename(path),
-                        'clips': {k: {kk: vv for kk, vv in v.items()} for k, v in entry['clips'].items()},
-                        'missing': len(missing)}
+        report[name] = {'file': os.path.basename(path), 'clips': entry['clips'], 'missing': len(missing)}
     return entry
+
+
+def dump_tracks(chars, src, tracks_dir='tracks'):
+    os.makedirs(tracks_dir, exist_ok=True)
+    found = {norm(fn[:-7]): fn[:-7] for fn in os.listdir(src) if fn.lower().endswith('.reanim')}
+    for nm in chars:
+        real = found.get(norm(nm))
+        if not real:
+            print('no reanim for', nm)
+            continue
+        fps, tracks, order = read_reanim(os.path.join(src, real + '.reanim'))
+        lines = ['%s  fps=%s  frames=%d' % (real, fps, max((len(v) for v in tracks.values()), default=0))]
+        for tn in order:
+            frames = resolve(tracks[tn])
+            vis = [i for i, f in enumerate(frames) if f['f'] >= 0]
+            imgs = sorted({f['i'] for f in frames if f['i']})
+            lines.append('  %-28s n=%-3d visible=%-12s %s' % (tn, len(frames),
+                                                             ('%d..%d' % (vis[0], vis[-1])) if vis else '-',
+                                                             ' '.join(i.replace('IMAGE_REANIM_', '') for i in imgs[:6]))
+        open(os.path.join(tracks_dir, real + '.txt'), 'w').write('\n'.join(lines))
+        print('tracks ->', real)
 
 
 def main():
@@ -289,15 +325,20 @@ def main():
     for fn in files:
         try:
             fps, tracks, order = read_reanim(os.path.join(SRC, fn))
-            inventory[fn[:-7]] = {'fps': fps, 'tracks': order,
-                                  'frames': max((len(v) for v in tracks.values()), default=0)}
+            inventory[fn[:-7]] = {'fps': fps, 'ntracks': len(tracks),
+                                  'frames': max((len(v) for v in tracks.values()), default=0),
+                                  'anims': [t for t in order if t.startswith('anim_')]}
         except Exception as exc:
             inventory[fn[:-7]] = {'error': str(exc)}
     json.dump(inventory, open('inventory.json', 'w'), indent=1)
-    print('inventory:', len(inventory), 'reanim')
+    err = sum(1 for v in inventory.values() if 'error' in v)
+    print('inventory: %d reanim, %d parse errors' % (len(inventory), err))
 
+    dump_tracks(KEYCHARS, SRC)
+
+    found = {norm(fn[:-7]): fn[:-7] for fn in files}
     if MODE == 'samples':
-        targets = [nm for nm in SAMPLES if nm in inventory]
+        targets = [found[norm(n)] for n in SAMPLES if norm(n) in found]
         print('sample targets:', targets)
     else:
         targets = [k for k in inventory if 'error' not in inventory[k]]
