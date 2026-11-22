@@ -1,1 +1,10 @@
-python3: can't open file '/home/runner/work/pvz-reanim-bake/pvz-reanim-bake/bake_reanim.py': [Errno 2] No such file or directory
+source /tmp/pvz/reanim: 146 reanim, 1788 png
+inventory: 146 reanim
+sample targets: ['Chomper', 'Zombie', 'Zombie_gargantuar']
+baking Chomper
+  FAILED Chomper junk after document element: line 2, column 0
+baking Zombie
+  FAILED Zombie junk after document element: line 2, column 0
+baking Zombie_gargantuar
+  FAILED Zombie_gargantuar junk after document element: line 2, column 0
+total baked bytes: 0.00 MB

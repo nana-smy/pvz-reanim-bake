@@ -1,0 +1,11 @@
+{
+ "Chomper": {
+  "error": "junk after document element: line 2, column 0"
+ },
+ "Zombie": {
+  "error": "junk after document element: line 2, column 0"
+ },
+ "Zombie_gargantuar": {
+  "error": "junk after document element: line 2, column 0"
+ }
+}
