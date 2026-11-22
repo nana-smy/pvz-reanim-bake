@@ -15,7 +15,9 @@ SHEETS = os.environ.get('SHEETS', 'sheets')
 SCALE = float(os.environ.get('SCALE', '0.78'))
 QUALITY = int(os.environ.get('QUALITY', '78'))
 MAX_W = 16000
-MAX_FRAMES = 40
+MAX_FRAMES = int(os.environ.get('MAX_FRAMES', '34'))
+MAX_CELL_W = 900
+MAX_CELL_H = 1150
 PAD = 2
 DIAG = MODE == 'samples'
 
@@ -202,13 +204,10 @@ class Xform(object):
         i01 = self.m01 / det
         i10 = self.m10 / det
         i11 = self.m00 / det
-        a = i00
-        b = i01
-        c = i00 * (offx - cx) + i01 * (offy - cy)
-        d = i10
-        e = i11
-        f = i10 * (offx - cx) + i11 * (offy - cy)
-        return (a, b, c, d, e, f)
+        return (i00, i01,
+                i00 * (offx - cx) + i01 * (offy - cy),
+                i10, i11,
+                i10 * (offx - cx) + i11 * (offy - cy))
 
 
 def paste_part(canvas, part, fr, scale, ox, oy):
@@ -217,7 +216,7 @@ def paste_part(canvas, part, fr, scale, ox, oy):
     bb = xf.map_bbox(w, h, ox, oy)
     dw = int(math.ceil(bb[2] - bb[0])) + 1
     dh = int(math.ceil(bb[3] - bb[1])) + 1
-    if dw <= 0 or dh <= 0 or dw > 6000 or dh > 6000:
+    if dw <= 0 or dh <= 0 or dw > 8000 or dh > 8000:
         return False
     out = part.transform((dw, dh), Image.AFFINE, xf.affine(w, h, ox, oy, bb[0], bb[1]),
                          resample=Image.BICUBIC)
@@ -254,7 +253,7 @@ def char_cell(resolved, order, clips, index, scale, missing):
     if maxx < minx:
         return None
     ox = -minx + PAD
-    oy = maxy + PAD
+    oy = -miny + PAD
     W = int(math.ceil(maxx - minx)) + 2 * PAD + 1
     H = int(math.ceil(maxy - miny)) + 2 * PAD + 1
     return W, H, ox, oy
@@ -345,8 +344,7 @@ def pick_clips(resolved, order, family):
         if start >= 2:
             out.insert(0, ('idle', 0, start))
     if DIAG:
-        names = sorted(anims)
-        print('  anims:', len(names), names[:24])
+        print('  anims:', len(anims), sorted(anims))
         print('  picked:', [(c[0], c[1], c[2]) for c in out])
     return out[:5]
 
@@ -377,12 +375,8 @@ def variant_forces(variant):
     return hides, shows
 
 
-def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
+def bake_char(key, path, family, index, manifest, report, sample_mode, scale_in):
     fps, tracks, order = read_reanim(path)
-    if DIAG:
-        print('  tracks:', len(order))
-        for tn in order[:3] + order[-3:]:
-            print('   raw', tn, ET.tostring_tostr) if False else None
     variant, base = '', key
     for v in ZOMBIE_VARIANTS:
         if key.endswith('_' + v):
@@ -398,26 +392,40 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
     apply_forces(resolved, hides, shows)
 
     if DIAG:
+        print('  tracks:', len(order))
         for tn in order:
             fr_all = resolved[tn]
             vis = sum(1 for fr in fr_all if fr['f'] >= 0)
             sym = next((fr['i'] for fr in fr_all if fr['i']), '')
-            print('   T %-34s n=%3d vis=%3d sym=%-40s found=%s' %
-                  (tn, len(fr_all), vis, sym[:40], bool(image_of(sym, index)) if sym else '-'))
+            print('   T %-34s n=%3d vis=%3d sym=%s found=%s' %
+                  (tn, len(fr_all), vis, sym[:44], bool(image_of(sym, index)) if sym else '-'))
 
     clips = pick_clips(resolved, order, family)
     if not clips:
         print('  no clips for', key)
         return 0
     missing = set()
+    scale = scale_in
     cell = char_cell(resolved, order, clips, index, scale, missing)
     if not cell:
         print('  empty cell for', key)
         return 0
+    for _ in range(5):
+        W, H, ox, oy = cell
+        if W <= MAX_CELL_W and H <= MAX_CELL_H:
+            break
+        fit = min(MAX_CELL_W / float(max(1, W)), MAX_CELL_H / float(max(1, H)))
+        scale = scale * fit * 0.98
+        cell = char_cell(resolved, order, clips, index, scale, missing)
+        if not cell:
+            print('  empty cell for', key)
+            return 0
     W, H, ox, oy = cell
-    print('  cell %dx%d ox=%.1f oy=%.1f missing=%d %s' % (W, H, ox, oy, len(missing), sorted(missing)[:6]))
+    print('  cell %dx%d ox=%.1f oy=%.1f scale=%.3f missing=%d %s' %
+          (W, H, ox, oy, scale, len(missing), sorted(missing)[:6]))
 
-    entry = {'w': W, 'h': H, 'ax': round(ox, 1), 'ay': round(oy, 1), 'fps': int(fps), 'clips': {}}
+    entry = {'w': W, 'h': H, 'ax': round(ox, 1), 'ay': round(oy, 1),
+             'fps': int(fps), 'scale': round(scale, 3), 'clips': {}}
     rows, total, empty = [], 0, 0
     for label, s, e in clips:
         n = e - s
@@ -439,8 +447,8 @@ def bake_char(key, path, family, index, manifest, report, sample_mode, scale):
                                  'cols': cols, 'rows': rr, 'fps': round(fps / step, 2),
                                  'bytes': nbytes}
         total += nbytes
-        print('  %-8s %3d fr %4dx%4d %7.1f KB parts/frame %s' %
-              (label, len(frames), W, H, nbytes / 1024.0, drawn[:6]))
+        print('  %-8s %3d fr %4dx%4d %7.1f KB parts=%s' %
+              (label, len(frames), W, H, nbytes / 1024.0, drawn[:6])
         rows.append((label, frames))
     if not entry['clips']:
         return 0
@@ -460,7 +468,8 @@ def main():
         sys.exit(1)
     files = {norm(fn[:-7]): fn[:-7] for fn in os.listdir(SRC) if fn.lower().endswith('.reanim')}
     index = build_index(SRC)
-    print('source %s: %d reanim, %d png, scale %.2f q%d' % (SRC, len(files), len(index), SCALE, QUALITY))
+    print('source %s: %d reanim, %d png, scale %.2f q%d maxfr %d' %
+          (SRC, len(files), len(index), SCALE, QUALITY, MAX_FRAMES))
     os.makedirs(SHEETS, exist_ok=True)
 
     jobs = []
@@ -489,7 +498,7 @@ def main():
             print('  FAILED', key, exc)
             report[key] = {'error': str(exc)}
 
-    manifest = {'fps': 12, 'scale': SCALE, 'chars': manifest}
+    manifest = {'fps': 12, 'chars': manifest}
     json.dump(manifest, open('manifest.json', 'w'), indent=1)
     json.dump(report, open('report.json', 'w'), indent=1)
     print('total %.2f MB over %d chars' % (total / 1048576.0, len(manifest['chars'])))
