@@ -1,13 +1,15 @@
 source /tmp/pvz/reanim: 146 reanim, 1788 png, scale 0.78 q78
 jobs: 13
 baking Cabbagepult <- Cabbagepult
-  idle       4 fr   17x  14     0.1 KB
+  cell 17x14  clips=['idle']
+  !! EMPTY clip idle
 baking Chomper <- Chomper
   no clips for Chomper
 baking PeaShooter <- PeaShooter
   no clips for PeaShooter
 baking SunFlower <- SunFlower
-  idle      25 fr   65x  64     0.3 KB
+  cell 65x64  clips=['idle']
+  !! EMPTY clip idle
 baking Wallnut <- Wallnut
   no clips for Wallnut
 baking Zombie <- Zombie
@@ -26,4 +28,4 @@ baking Zombie_screendoor <- Zombie
   no clips for Zombie_screendoor
 baking Zombie_duckytube <- Zombie
   no clips for Zombie_duckytube
-total 0.00 MB over 2 chars
+total 0.00 MB over 0 chars

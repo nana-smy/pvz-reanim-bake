@@ -1,40 +1,5 @@
 {
  "fps": 12,
  "scale": 0.78,
- "chars": {
-  "Cabbagepult": {
-   "w": 17,
-   "h": 14,
-   "ax": -31.2,
-   "ay": -35.1,
-   "fps": 12,
-   "clips": {
-    "idle": {
-     "file": "reanim/Cabbagepult/idle.webp",
-     "frames": 4,
-     "cols": 4,
-     "rows": 1,
-     "fps": 12.0,
-     "bytes": 90
-    }
-   }
-  },
-  "SunFlower": {
-   "w": 65,
-   "h": 64,
-   "ax": -1.3,
-   "ay": -1.7,
-   "fps": 12,
-   "clips": {
-    "idle": {
-     "file": "reanim/SunFlower/idle.webp",
-     "frames": 25,
-     "cols": 25,
-     "rows": 1,
-     "fps": 12.0,
-     "bytes": 284
-    }
-   }
-  }
- }
+ "chars": {}
 }
