@@ -24,7 +24,6 @@ SRC = os.environ.get('REANIM_SRC', 'src_assets/reanim')
 MODE = os.environ.get('MODE', 'samples')
 SHEETS = os.environ.get('SHEETS', 'sheets')
 MAX_W = 16000
-TARGET_BYTES = 15 * 1024 * 1024
 PAD = 2
 
 SAMPLES = ['Chomper', 'PeaShooter', 'Zombie', 'Zombie_gargantuar', 'Zombie_paper', 'Zombie_bungi']
@@ -138,7 +137,7 @@ def paste_part(canvas, part, x, y, sx, sy, a, ox, oy):
     if abs(a) > 0.01:
         im = im.rotate(-a, expand=True, resample=Image.BICUBIC)
         W, H = im.size
-        dx, dy = -sw / 2.0, sh - sh / 2.0
+        dx, dy = -sw / 2.0, sh / 2.0
         t = math.radians(-a)
         c, s = math.cos(t), math.sin(t)
         ax = W / 2.0 + dx * c - dy * s
@@ -149,12 +148,6 @@ def paste_part(canvas, part, x, y, sx, sy, a, ox, oy):
     if p[0] > canvas.size[0] or p[1] > canvas.size[1] or p[0] + im.size[0] < 0 or p[1] + im.size[1] < 0:
         return
     canvas.alpha_composite(im, p)
-
-
-def visible(fr, forced):
-    if fr['f'] < 0 and fr['i'] is None:
-        return False
-    return True
 
 
 def render_clip(resolved, order, s, e, index, missing):
@@ -306,9 +299,9 @@ def dump_tracks(chars, src, tracks_dir='tracks'):
             frames = resolve(tracks[tn])
             vis = [i for i, f in enumerate(frames) if f['f'] >= 0]
             imgs = sorted({f['i'] for f in frames if f['i']})
-            lines.append('  %-28s n=%-3d visible=%-12s %s' % (tn, len(frames),
-                                                             ('%d..%d' % (vis[0], vis[-1])) if vis else '-',
-                                                             ' '.join(i.replace('IMAGE_REANIM_', '') for i in imgs[:6]))
+            vis_s = ('%d..%d' % (vis[0], vis[-1])) if vis else '-'
+            img_s = ' '.join(i.replace('IMAGE_REANIM_', '') for i in imgs[:6])
+            lines.append('  %-26s n=%-3d vis=%-10s %s' % (tn, len(frames), vis_s, img_s))
         open(os.path.join(tracks_dir, real + '.txt'), 'w').write('\n'.join(lines))
         print('tracks ->', real)
 
