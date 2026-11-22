@@ -1,64 +1,29 @@
-source /tmp/pvz/reanim: 146 reanim, 1788 png
-inventory: 146 reanim, 0 parse errors
-tracks -> Zombie
-tracks -> Zombie_gargantuar
-tracks -> Zombie_boss
-tracks -> Zombie_paper
-tracks -> Zombie_bungi
-tracks -> Zombie_balloon
-tracks -> Zombie_digger
-tracks -> Zombie_polevaulter
-tracks -> Zombie_jackbox
-tracks -> Zombie_dancer
-tracks -> Chomper
-tracks -> PeaShooter
-tracks -> SunFlower
-tracks -> Wallnut
-tracks -> Cabbagepult
-sample targets: ['Chomper', 'PeaShooter', 'Zombie', 'Zombie_gargantuar', 'Zombie_paper', 'Zombie_bungi']
-baking Chomper
-  swallow         28 frames   73x  58    18.0 KB
-  chew            16 frames   43x  53     9.0 KB
-baking PeaShooter
-  full_idle       25 frames   75x  69    58.2 KB
-  shooting        25 frames   73x  43    39.5 KB
-  head_idle       25 frames   68x  38    36.3 KB
-  idle            25 frames   49x  43    25.1 KB
-  stem            25 frames   49x  43    25.1 KB
-  face            38 frames   78x  72    65.6 KB
-  blink            3 frames   16x  13     0.9 KB
-baking Zombie
-  superlongdeath  35 frames  170x 146    62.2 KB
-  swim            21 frames   94x 144    91.7 KB
-  death2          33 frames  108x  86    19.8 KB
-  waterdeath      25 frames   99x  84    53.3 KB
-  dance           25 frames  104x 151   117.5 KB
-  innerarm3       36 frames  183x 189    81.9 KB
-  innerarm2       36 frames  183x 189    81.9 KB
-  innerarm1       39 frames  183x 189    89.8 KB
-  head1           25 frames  104x 151   117.5 KB
-  head2           25 frames  104x 151   117.5 KB
-  tongue          25 frames  104x 151   117.5 KB
-  hair            25 frames  104x 151   117.5 KB
-  cone            25 frames  104x 151   117.5 KB
-  bucket          25 frames  104x 151   117.5 KB
-baking Zombie_gargantuar
-  throw           34 frames  203x  94     9.1 KB
-  death           30 frames  111x  97     6.3 KB
-baking Zombie_paper
-  death           36 frames   52x  86     4.2 KB
-  eat_nopaper     24 frames  119x 206    66.9 KB
-  walk_nopaper    24 frames  115x 166    66.2 KB
-  gasp            13 frames   83x  89    25.2 KB
-  hair            28 frames  124x 206    75.9 KB
-  head1           36 frames  124x 206    99.5 KB
-  head_look       13 frames   83x  89    25.2 KB
-  head_pupils     13 frames   83x  89    25.2 KB
-  hairpiece       28 frames  124x 206    75.9 KB
-  head_jaw        28 frames  124x 206    75.9 KB
-  head_glasses    28 frames  124x 206    75.9 KB
-baking Zombie_bungi
-  grab            15 frames  107x  76    10.2 KB
-  hold            10 frames   83x  78    20.4 KB
-  raise           13 frames   88x  79    27.2 KB
-total baked bytes: 2.22 MB
+source /tmp/pvz/reanim: 146 reanim, 1788 png, scale 0.78 q78
+jobs: 13
+baking Cabbagepult <- Cabbagepult
+  idle       4 fr   17x  14     0.1 KB
+baking Chomper <- Chomper
+  no clips for Chomper
+baking PeaShooter <- PeaShooter
+  no clips for PeaShooter
+baking SunFlower <- SunFlower
+  idle      25 fr   65x  64     0.3 KB
+baking Wallnut <- Wallnut
+  no clips for Wallnut
+baking Zombie <- Zombie
+  no clips for Zombie
+baking Zombie_bungi <- Zombie_bungi
+  no clips for Zombie_bungi
+baking Zombie_gargantuar <- Zombie_gargantuar
+  no clips for Zombie_gargantuar
+baking Zombie_paper <- Zombie_paper
+  no clips for Zombie_paper
+baking Zombie_cone <- Zombie
+  no clips for Zombie_cone
+baking Zombie_bucket <- Zombie
+  no clips for Zombie_bucket
+baking Zombie_screendoor <- Zombie
+  no clips for Zombie_screendoor
+baking Zombie_duckytube <- Zombie
+  no clips for Zombie_duckytube
+total 0.00 MB over 2 chars

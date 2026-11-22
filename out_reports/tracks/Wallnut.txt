@@ -1,7 +1,0 @@
-Wallnut  fps=12.0  frames=56
-  _ground                    n=56  vis=43..55     
-  anim_idle                  n=56  vis=-          
-  anim_face                  n=56  vis=43..55     WALLNUT_BODY
-  anim_blink_twitch          n=56  vis=17..21     WALLNUT_TWITCH
-  anim_blink_twice           n=56  vis=23..29     WALLNUT_BLINK1 WALLNUT_BLINK2
-  anim_blink_thrice          n=56  vis=31..41     WALLNUT_BLINK1 WALLNUT_BLINK2
