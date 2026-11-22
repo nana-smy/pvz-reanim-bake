@@ -1,0 +1,81 @@
+name: bake
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bake
+  cancel-in-progress: false
+
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: fetch original reanim assets (sparse)
+        run: |
+          git clone --filter=blob:none --no-checkout https://github.com/FregD156/PvZ_Assets.git /tmp/pvz
+          cd /tmp/pvz
+          git sparse-checkout set reanim
+          git checkout main || git checkout master
+          ls /tmp/pvz/reanim | wc -l
+
+      - name: python deps
+        run: |
+          python3 -m pip install --quiet --upgrade pip
+          python3 -m pip install --quiet pillow
+
+      - name: bake
+        env:
+          MODE: samples
+          REANIM_SRC: /tmp/pvz/reanim
+        run: |
+          set -o pipefail
+          python3 bake_reanim.py 2>&1 | tee bake.log
+
+      - name: collect results
+        if: always()
+        run: |
+          git config user.name  bake-bot
+          git config user.email bake-bot@users.noreply.github.com
+          mkdir -p out_reports
+          cp -f bake.log out_reports/bake.log 2>/dev/null || true
+          cp -f inventory.json out_reports/inventory.json 2>/dev/null || true
+          cp -f report.json out_reports/report.json 2>/dev/null || true
+          cp -f manifest.json out_reports/manifest.json 2>/dev/null || true
+          cp -f contact_*.png out_reports/ 2>/dev/null || true
+          git add -f out_reports
+          git commit -m "bake run $(date -u +%Y%m%dT%H%M%SZ)" || true
+          git push || true
+
+      - name: publish sheets bundle
+        if: always()
+        run: |
+          if [ -f reanim-assets.tar ]; then
+            gh release delete bake-latest --yes --cleanup-tag 2>/dev/null || true
+            gh release create bake-latest reanim-assets.tar manifest.json \
+              --title "baked reanim sheets" \
+              --notes "auto-baked $(date -u +%Y%m%dT%H%M%SZ)" 2>/dev/null || true
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reanim-out
+          path: |
+            sheets/
+            report.json
+            bake.log
+            contact_*.png
+            reanim-assets.tar
+          if-no-files-found: ignore
